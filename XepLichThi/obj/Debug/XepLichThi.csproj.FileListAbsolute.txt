@@ -1,0 +1,12 @@
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\bin\Debug\XepLichThi.exe.config
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\bin\Debug\XepLichThi.exe
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\bin\Debug\XepLichThi.pdb
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.csprojAssemblyReference.cache
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Properties.Resources.resources
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Controls.InputCustom.resources
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.csproj.GenerateResource.cache
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.csproj.CoreCompileInputs.cache
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.exe
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.pdb
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Form1.resources
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Login.resources
