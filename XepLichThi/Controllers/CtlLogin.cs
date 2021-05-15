@@ -8,5 +8,10 @@ namespace XepLichThi.Controllers
 {
     class CtlLogin
     {
+        public CtlLogin()
+        {
+
+        }
+
     }
 }
