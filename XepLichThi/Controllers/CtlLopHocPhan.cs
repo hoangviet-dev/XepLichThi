@@ -18,14 +18,14 @@ namespace XepLichThi.Controllers
         public List<LopHocPhan> GetData(string search)
         {
             search = "%" + search + "%";
-            string query = @"select * from LopHocPhan where MaLopHocPhan like @search or TenLopHocPhan like @search";      
-            List<LopHocPhan> llhp = new List<LopHocPhan>;
+            string query = "select * from LopHocPhan where MaLopHocPhan like @search or TenLopHocPhan like @search";      
+            List<LopHocPhan> llhp = new List<LopHocPhan>();
             object[] para = { search };
             DataTable dt = provider.excuteQuery(query,para);
             DataRowCollection drc = dt.Rows;
             foreach (DataRow dr in drc)
             {
-                llhp.Add(new LopHocPhan(dr[0].ToString(), dr[1].ToString(), int.Parse((string)dr[2])));
+                llhp.Add(new LopHocPhan(dr[0].ToString(), dr[1].ToString(), int.Parse(dr[2].ToString())));
             }
             return llhp;
         }
