@@ -32,6 +32,9 @@ namespace XepLichThi.Views
                 this.Hide();
                 frm.ShowDialog();
                 this.Show();
+            } else
+            {
+                lblNotification.Text = "Đăng nhập không thành công, tài khoản hoặc mật khẩu bị sai";
             }
         }
     }
