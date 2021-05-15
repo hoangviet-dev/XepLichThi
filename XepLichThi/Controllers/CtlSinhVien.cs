@@ -12,7 +12,7 @@ namespace XepLichThi.Controllers
     {
         private DataProvider data;
 
-        public CtlSinhVien(DataProvider data)
+        public CtlSinhVien()
         {
             this.data = new DataProvider();
         }
