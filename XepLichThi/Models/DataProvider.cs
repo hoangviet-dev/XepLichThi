@@ -25,7 +25,8 @@ namespace XepLichThi.Models
             MatchCollection names = Regex.Matches(query, @"@(.*?)(?=[ ,])");
             foreach(Match name in names)
             {
-                res.Add(name.Value);
+                if (res.Find(item => item == name.Value) != name.Value)
+                    res.Add(name.Value);
             }
             return res;
         }
