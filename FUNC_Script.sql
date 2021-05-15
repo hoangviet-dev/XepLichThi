@@ -41,9 +41,9 @@ BEGIN
 		RETURN
 	END
 
-	INSERT [dbo].[TaiKhoan](UserName,Password,Type) VALUES (@UserName, @Password, @Type)
+	INSERT TaiKhoan(UserName,Password,Type) VALUES (@UserName, @Password, @Type)
 	
-	SET @Result = 1
+	SET @Result = 0
 END
 GO
 
@@ -193,9 +193,7 @@ BEGIN
 	IF @UserName IS NULL OR
 		@UserName = '' OR
 		@Password IS NULL OR
-		@Password = '' OR
-		@Type IS NULL OR
-		@Type = ''
+		@Password = ''
 	BEGIN
 		SET @Type = -1
 		RETURN
