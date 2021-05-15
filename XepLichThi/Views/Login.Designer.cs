@@ -50,9 +50,10 @@ namespace XepLichThi.Views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(951, 514);
+            this.panel1.Size = new System.Drawing.Size(1268, 633);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -62,9 +63,10 @@ namespace XepLichThi.Views
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(182, 47);
+            this.panel2.Location = new System.Drawing.Point(243, 58);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(582, 430);
+            this.panel2.Size = new System.Drawing.Size(776, 529);
             this.panel2.TabIndex = 0;
             // 
             // panel4
@@ -73,9 +75,10 @@ namespace XepLichThi.Views
             this.panel4.Controls.Add(this.txtPasswork);
             this.panel4.Controls.Add(this.txtUserName);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 66);
+            this.panel4.Location = new System.Drawing.Point(0, 81);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(582, 272);
+            this.panel4.Size = new System.Drawing.Size(776, 335);
             this.panel4.TabIndex = 3;
             // 
             // lblNotification
@@ -83,29 +86,32 @@ namespace XepLichThi.Views
             this.lblNotification.AutoSize = true;
             this.lblNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotification.ForeColor = System.Drawing.Color.Red;
-            this.lblNotification.Location = new System.Drawing.Point(63, 248);
+            this.lblNotification.Location = new System.Drawing.Point(84, 305);
+            this.lblNotification.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNotification.Name = "lblNotification";
-            this.lblNotification.Size = new System.Drawing.Size(51, 20);
+            this.lblNotification.Size = new System.Drawing.Size(64, 25);
             this.lblNotification.TabIndex = 1;
             this.lblNotification.Text = "label2";
             // 
             // txtPasswork
             // 
-            this.txtPasswork.Location = new System.Drawing.Point(65, 138);
+            this.txtPasswork.Location = new System.Drawing.Point(87, 170);
+            this.txtPasswork.Margin = new System.Windows.Forms.Padding(5);
             this.txtPasswork.Name = "txtPasswork";
             this.txtPasswork.PasswordChar = '⬤';
             this.txtPasswork.Placeholder = "Mật khẩu";
-            this.txtPasswork.Size = new System.Drawing.Size(450, 93);
+            this.txtPasswork.Size = new System.Drawing.Size(600, 114);
             this.txtPasswork.TabIndex = 0;
             this.txtPasswork.Title = "Mật khẩu";
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(65, 32);
+            this.txtUserName.Location = new System.Drawing.Point(87, 39);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(5);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
             this.txtUserName.Placeholder = "Tài khoản";
-            this.txtUserName.Size = new System.Drawing.Size(450, 91);
+            this.txtUserName.Size = new System.Drawing.Size(600, 112);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.Title = "Tài khoản";
             // 
@@ -113,18 +119,20 @@ namespace XepLichThi.Views
             // 
             this.panel3.Controls.Add(this.buttonCustom1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 338);
+            this.panel3.Location = new System.Drawing.Point(0, 416);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(582, 92);
+            this.panel3.Size = new System.Drawing.Size(776, 113);
             this.panel3.TabIndex = 2;
             // 
             // buttonCustom1
             // 
             this.buttonCustom1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
             this.buttonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCustom1.Location = new System.Drawing.Point(119, 20);
+            this.buttonCustom1.Location = new System.Drawing.Point(159, 25);
+            this.buttonCustom1.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCustom1.Name = "buttonCustom1";
-            this.buttonCustom1.Size = new System.Drawing.Size(333, 60);
+            this.buttonCustom1.Size = new System.Drawing.Size(444, 74);
             this.buttonCustom1.TabIndex = 0;
             this.buttonCustom1.Title = "ĐĂNG NHẬP";
             this.buttonCustom1.ButtonClick += new System.EventHandler(this.buttonCustom1_Click);
@@ -136,19 +144,21 @@ namespace XepLichThi.Views
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(582, 66);
+            this.label1.Size = new System.Drawing.Size(776, 81);
             this.label1.TabIndex = 1;
             this.label1.Text = "ĐĂNG NHẬP";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(975, 538);
+            this.ClientSize = new System.Drawing.Size(1300, 662);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.Text = "Đăng nhập";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

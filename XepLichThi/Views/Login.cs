@@ -30,7 +30,6 @@ namespace XepLichThi.Views
             if (String.IsNullOrEmpty(username))
             {
                 lblNotification.Text = "Tài khoản không được để trống.";
-                lblNotification.Focus();
             }
             else if (String.IsNullOrEmpty(password)){
                 lblNotification.Text = "Mật khẩu không được để trống.";
