@@ -51,6 +51,7 @@ namespace XepLichThi.Views.Controls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
             this.Controls.Add(this.lblTitle);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "ButtonCustom";
             this.Size = new System.Drawing.Size(333, 60);
             this.ResumeLayout(false);

@@ -31,6 +31,7 @@ namespace XepLichThi.Views
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlView = new System.Windows.Forms.Panel();
+            this.headerCustom1 = new XepLichThi.Views.Controls.HeaderCustom();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -42,22 +43,32 @@ namespace XepLichThi.Views
             // panel1
             // 
             this.panel1.Controls.Add(this.pnlView);
+            this.panel1.Controls.Add(this.headerCustom1);
             this.panel1.Controls.Add(this.pnlMenu);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 450);
+            this.panel1.Size = new System.Drawing.Size(1439, 450);
             this.panel1.TabIndex = 0;
             // 
             // pnlView
             // 
             this.pnlView.BackColor = System.Drawing.Color.White;
             this.pnlView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlView.Location = new System.Drawing.Point(222, 42);
+            this.pnlView.Location = new System.Drawing.Point(222, 112);
             this.pnlView.Name = "pnlView";
-            this.pnlView.Size = new System.Drawing.Size(578, 408);
+            this.pnlView.Size = new System.Drawing.Size(1217, 338);
             this.pnlView.TabIndex = 2;
+            // 
+            // headerCustom1
+            // 
+            this.headerCustom1.BackColor = System.Drawing.Color.White;
+            this.headerCustom1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerCustom1.Location = new System.Drawing.Point(222, 42);
+            this.headerCustom1.Name = "headerCustom1";
+            this.headerCustom1.Size = new System.Drawing.Size(1217, 70);
+            this.headerCustom1.TabIndex = 0;
             // 
             // pnlMenu
             // 
@@ -76,7 +87,7 @@ namespace XepLichThi.Views
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 42);
+            this.panel2.Size = new System.Drawing.Size(1439, 42);
             this.panel2.TabIndex = 0;
             // 
             // lblTitle
@@ -105,7 +116,7 @@ namespace XepLichThi.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1439, 450);
             this.Controls.Add(this.panel1);
             this.Name = "Main";
             this.Text = "Main";
@@ -125,5 +136,6 @@ namespace XepLichThi.Views
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
+        private Controls.HeaderCustom headerCustom1;
     }
 }

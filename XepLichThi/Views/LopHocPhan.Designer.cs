@@ -1,7 +1,7 @@
 ﻿
 namespace XepLichThi.Views
 {
-    partial class Student
+    partial class LopHocPhan
     {
         /// <summary>
         /// Required designer variable.
@@ -29,19 +29,7 @@ namespace XepLichThi.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Student
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Student";
-            this.Text = "Student";
-            this.ResumeLayout(false);
-
+            this.components = new System.ComponentModel.Container();
         }
 
         #endregion
