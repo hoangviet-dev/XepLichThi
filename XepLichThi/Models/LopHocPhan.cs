@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,13 @@ namespace XepLichThi.Models
             SoTinChi = soTinChi;
         }
 
+        [DisplayName("Mã lớp học phần")]
         public string MaLopHocPhan { get; set; }
+
+        [DisplayName("Tên lớp học phần")]
         public string TenLopHocPhan { get; set; }
+
+        [DisplayName("Số tín chỉ")]
         public int SoTinChi { get; set; }
 
     }
