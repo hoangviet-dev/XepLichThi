@@ -21,10 +21,17 @@ namespace XepLichThi.Views.Controls
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public string Title
         {
-            get => label1.Text;
-            set => label1.Text = value;
+            get => button1.Text;
+            set => button1.Text = value;
         }
 
+
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public  Color BackgroundColor
+        {
+            get => button1.BackColor;
+            set => button1.BackColor = value;
+        }
 
 
         [Browsable(true)]
@@ -38,5 +45,6 @@ namespace XepLichThi.Views.Controls
             if (this.ButtonClick != null)
                 this.ButtonClick(this, e);
         }
+
     }
 }

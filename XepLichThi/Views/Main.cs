@@ -26,11 +26,11 @@ namespace XepLichThi.Views
 
         public void createMenu()
         {
-            lMenu.Add(new Menu("SINH VIÊN", "Student"));
-            lMenu.Add(new Menu("LỚP HỌC PHẦN", "Student"));
-            lMenu.Add(new Menu("PHÒNG THI", "Student"));
-            lMenu.Add(new Menu("DANH MỤC", "Student"));
-            lMenu.Add(new Menu("XẾP LỊCH THI", "Student"));
+            lMenu.Add(new Menu("SINH VIÊN", "XepLichThi.Views.SinhVien"));
+            lMenu.Add(new Menu("LỚP HỌC PHẦN", "XepLichThi.Views.LopHocPhan"));
+            lMenu.Add(new Menu("PHÒNG THI", "XepLichThi.Views.PhongThi"));
+            lMenu.Add(new Menu("DANH MỤC", "XepLichThi.Views.DanhMuc"));
+            lMenu.Add(new Menu("XẾP LỊCH THI", "XepLichThi.Views.XepLich"));
 
             pnlMenu.Controls.Clear();
 

@@ -81,6 +81,12 @@
     <Compile Include="Views\Controls\ButtonSmallCustom.Designer.cs">
       <DependentUpon>ButtonSmallCustom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\HeaderCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\HeaderCustom.Designer.cs">
+      <DependentUpon>HeaderCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\MenuItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,11 +105,29 @@
     <Compile Include="Views\Controls\TextboxGroupCustom.Designer.cs">
       <DependentUpon>TextboxGroupCustom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DanhMuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DanhMuc.Designer.cs">
+      <DependentUpon>DanhMuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Layout.Designer.cs">
+      <DependentUpon>Layout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LopHocPhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LopHocPhan.Designer.cs">
+      <DependentUpon>LopHocPhan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Main.cs">
       <SubType>Form</SubType>
@@ -111,11 +135,29 @@
     <Compile Include="Views\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Student.cs">
+    <Compile Include="Views\PhongThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Student.Designer.cs">
-      <DependentUpon>Student.cs</DependentUpon>
+    <Compile Include="Views\PhongThi.Designer.cs">
+      <DependentUpon>PhongThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SinhVien.Designer.cs">
+      <DependentUpon>SinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\XepLich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\XepLich.Designer.cs">
+      <DependentUpon>XepLich.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -135,6 +177,9 @@
     <EmbeddedResource Include="Views\Controls\ButtonSmallCustom.resx">
       <DependentUpon>ButtonSmallCustom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\HeaderCustom.resx">
+      <DependentUpon>HeaderCustom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\MenuItemControl.resx">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,14 +189,14 @@
     <EmbeddedResource Include="Views\Controls\TextboxGroupCustom.resx">
       <DependentUpon>TextboxGroupCustom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Layout.resx">
+      <DependentUpon>Layout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Student.resx">
-      <DependentUpon>Student.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

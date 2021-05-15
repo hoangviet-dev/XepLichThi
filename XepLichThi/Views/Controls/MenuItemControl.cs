@@ -28,7 +28,7 @@ namespace XepLichThi.Views.Controls
 
         public string ClassName
         {
-            get => "XepLichThi.Views." + className;
+            get => className;
             set => className = value;
         }
 
