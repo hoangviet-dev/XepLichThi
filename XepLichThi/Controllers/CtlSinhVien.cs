@@ -5,25 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XepLichThi.Models;
+using static XepLichThi.Models.DataProvider;
 
 namespace XepLichThi.Controllers
 {
     class CtlSinhVien
     {
-        private DataProvider data;
+        private DataProvider dataProvider;
 
         public CtlSinhVien()
         {
-            this.data = new DataProvider();
+            dataProvider = new DataProvider();
         }
 
         public List<SinhVien> getData(string search)
         {
             DataTable table;
             List<SinhVien> list = new List<SinhVien>();
-            string query = @"SELECT * FROM SinhVien WHERE MaSinhVien like @search or TenSinhVien like @search";
-            search = "%" + search + "%";
-            table = data.excuteQuery(query, new object[]{search});
+            string query = @"SELECT * FROM func_SV_Tim_Kiem(@search)";
+            table = dataProvider.excuteQuery(query, new object[]{search});
             DataRowCollection rows = table.Rows;
             foreach(DataRow row in rows)
             {
@@ -35,29 +35,68 @@ namespace XepLichThi.Controllers
         public int addData(string maSV, string ten, DateTime ngay)
         {
             int res = 0;
-            string query = @"INSERT INTO SinhVien VALUES (@ma, @ten, @ngay)";
+            string query = @"EXEC proc_SV_Them @MaSinhVien, @TenSinhVien, @NgaySinh, @res OUT";
+            SqlParam[] paramIn =
+            {
+                new SqlParam("@MaSinhVien", maSV)
+                ,new SqlParam("@TenSinhVien", ten)
+                ,new SqlParam("@NgaySinh", ngay)
+            };
 
-            res = data.excuteNonQuery(query, new object[] { maSV, ten, ngay });
+            SqlParam[] paramOut =
+            {
+                new SqlParam("@res", 0)
+            };
+            object[] obj = dataProvider.excuteProc(query, paramIn, paramOut);
+            res = (int)obj[0];
+            /*
+                0: thành công
+                -1: dữ liệu trống
+                -2: trùng mã
+             */
             return res;
         }
 
         public int deleteData(string maSV)
         {
             int res = 0;
-            string query = @"DELETE FROM SinhVien WHERE MaSinhVien = @maSV";
-            res = data.excuteNonQuery(query, new object[] { maSV });
+            string query = @"EXEC proc_SV_Xoa @MaSinhVien, @res";
+            SqlParam[] paramIn = {new SqlParam(@"MaSinhVien", maSV) };
+            SqlParam[] paramOut = { new SqlParam("@res", 0) };
 
+            object[] obj = dataProvider.excuteProc(query, paramIn, paramOut);
+
+            res = (int)obj[0];
+            /*
+                0: thành công
+                -1: dữ liệu trống
+                -2: k tìm thấy mã
+             */
             return res;
         }
 
         public int updateData(string maSV, string ten, DateTime ngay)
         {
             int res = 0;
-            string query = @"
-                                UPDATE SinhVien
-                                SET TenSinhVien = @ten, NgaySinh = @ngay
-                                WHERE MaSinhVien = @ma";
-            res = data.excuteNonQuery(query, new object[] { ten, ngay, maSV });
+            string query = @"EXEC proc_SV_Sua @MaSinhVien, @TenSinhVien, @NgaySinh, @res OUT";
+            SqlParam[] paramIn =
+            {
+                new SqlParam("@MaSinhVien", maSV)
+                ,new SqlParam("@TenSinhVien", ten)
+                ,new SqlParam("@NgaySinh", ngay)
+            };
+
+            SqlParam[] paramOut =
+            {
+                new SqlParam("@res", 0)
+            };
+            object[] obj = dataProvider.excuteProc(query, paramIn, paramOut);
+            res = (int)obj[0];
+            /*
+                0: thành công
+                -1: dữ liệu trống
+                -2: k tìm thấy mã
+             */ 
             return res;
         }
     }
