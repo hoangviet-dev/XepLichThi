@@ -23,18 +23,29 @@ namespace XepLichThi.Views
 
         private void buttonCustom1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("asfasf");
+            //Console.WriteLine("debug");
             string username = txtUserName.Text;
             string password = txtPasswork.Text;
-            if (ctlLogin.CheckLogin(username, password))
+
+            if (String.IsNullOrEmpty(username))
+            {
+                lblNotification.Text = "Tài khoản không được để trống.";
+                lblNotification.Focus();
+            }
+            else if (String.IsNullOrEmpty(password)){
+                lblNotification.Text = "Mật khẩu không được để trống.";
+            }
+
+            else if (ctlLogin.CheckLogin(username, password))
             {
                 Main frm = new Main();
                 this.Hide();
                 frm.ShowDialog();
                 this.Show();
-            } else
+            } 
+            else
             {
-                lblNotification.Text = "Đăng nhập không thành công, tài khoản hoặc mật khẩu bị sai";
+                lblNotification.Text = "Đăng nhập không thành công, tài khoản hoặc mật khẩu bị sai.";
             }
         }
     }
