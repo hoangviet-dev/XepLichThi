@@ -24,5 +24,7 @@ namespace XepLichThi.Models
             TenSinhVien = tenSinhVien;
             NgaySinh = ngaySinh;
         }
+
+
     }
 }
