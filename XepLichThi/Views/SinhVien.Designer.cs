@@ -29,7 +29,15 @@ namespace XepLichThi.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // SinhVien
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1048, 450);
+            this.Name = "SinhVien";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

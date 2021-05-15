@@ -14,5 +14,6 @@ namespace XepLichThi.Views
         {
             InitializeComponent();
         }
+
     }
 }

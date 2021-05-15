@@ -12,9 +12,18 @@ namespace XepLichThi.Views
 {
     public partial class Layout : Form
     {
+        protected Object data;
         public Layout()
         {
             InitializeComponent();
+        }
+
+        protected void BindData()
+        {
+            if (data != null)
+            {
+                tblCus.BindData(data);
+            }
         }
     }
 }
