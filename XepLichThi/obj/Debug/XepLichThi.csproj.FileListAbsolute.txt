@@ -16,3 +16,4 @@ D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichTh
 D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Controls.MenuItemControl.resources
 D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Controls.HeaderCustom.resources
 D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Layout.resources
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.csprojAssemblyReference.cache
