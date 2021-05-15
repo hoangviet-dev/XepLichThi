@@ -674,7 +674,7 @@ AS
 		FROM	LoaiPhongThi
 		WHERE	MaLoaiPhongThi LIKE CONCAT('%',@In,'%')
 			OR LoaiPhongThi LIKE CONCAT('%',@In,'%')
-			OR ChiTiet LIKE CONCAT('%',@In,'%')
+			OR ChiTiet LIKE CONCAT('%',@In,'%') 
 	)
 GO
 
