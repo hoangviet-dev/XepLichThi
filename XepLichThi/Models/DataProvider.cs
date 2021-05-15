@@ -11,7 +11,13 @@ namespace XepLichThi.Models
 {
     class DataProvider
     {
-        private string connectionString = @"Data Source=BAOLAPTOP;Initial Catalog=XepLichThi;Integrated Security=True";
+        private string connectionString = @"Data Source=DESKTOP-P5KS5H9\SQLEXPRESS;Initial Catalog=XepLichThi;Integrated Security=True";
+
+        public DataProvider()
+        {
+
+        }
+
         private List<string> getListNameParameter(string query)
         {
             List<string> res = new List<string>();
@@ -24,7 +30,7 @@ namespace XepLichThi.Models
             return res;
         }
 
-        public DataTable excuteQuery(string query, List<object> parameter = null)
+        public DataTable excuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
             using(SqlConnection connection = new SqlConnection(connectionString))
@@ -34,7 +40,7 @@ namespace XepLichThi.Models
                 SqlCommand command = new SqlCommand(query,connection);
                 if (parameter != null)
                 {
-                    List<string> names = getListNameParameter(query);
+                    List<string> names = getListNameParameter(query + " ");
                     for(int i = 0; i < names.Count; i++)
                     {
                         command.Parameters.AddWithValue(names[i], parameter[i]);
@@ -47,7 +53,7 @@ namespace XepLichThi.Models
             return data;
         }
 
-        public int excuteNonQuery(string query, List<object> parameter = null)
+        public int excuteNonQuery(string query, object[] parameter = null)
         {
             int data = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -57,7 +63,7 @@ namespace XepLichThi.Models
                 SqlCommand command = new SqlCommand(query, connection);
                 if (parameter != null)
                 {
-                    List<string> names = getListNameParameter(query);
+                    List<string> names = getListNameParameter(query + " ");
                     for (int i = 0; i < names.Count; i++)
                     {
                         command.Parameters.AddWithValue(names[i], parameter[i]);
@@ -67,6 +73,38 @@ namespace XepLichThi.Models
                 connection.Close();
             }
             return data;
+        }
+
+        public object excuteProc(string procName, List<SqlParam> parameter = null)
+        {
+            object data = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(procName, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (parameter != null)
+                {
+                    foreach (SqlParam param in parameter)
+                    {
+                        cmd.Parameters.AddWithValue("@" + param.Name, param.Value);
+                    }
+                }
+                data = cmd.ExecuteReader();
+                connection.Close();
+            }
+            return data;
+        }
+
+        public class SqlParam
+        {
+            public string Name;
+            public string Value;
+            public SqlParam(string name, string value)
+            {
+                Name = name;
+                Value = value;
+            }
         }
     }
 }
