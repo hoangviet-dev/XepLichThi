@@ -67,12 +67,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Models\DieuKien.cs" />
     <Compile Include="Models\LichThi.cs" />
     <Compile Include="Models\LopHocPhan.cs" />
     <Compile Include="Models\PhongThi.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
+=======
+    <Compile Include="Models\DataProvider.cs" />
+>>>>>>> 5a3ce6d72b52f2404ce408a310b1beb00f126509
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Controls\ButtonCustom.cs">
@@ -98,6 +102,12 @@
     </Compile>
     <Compile Include="Views\Controls\MenuItemControl.Designer.cs">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\TableCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\TableCustom.Designer.cs">
+      <DependentUpon>TableCustom.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\TextboxCustom.cs">
       <SubType>UserControl</SubType>
@@ -188,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\MenuItemControl.resx">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\TableCustom.resx">
+      <DependentUpon>TableCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\TextboxCustom.resx">
       <DependentUpon>TextboxCustom.cs</DependentUpon>

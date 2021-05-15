@@ -16,6 +16,7 @@ D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichTh
 D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Controls.MenuItemControl.resources
 D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Controls.HeaderCustom.resources
 D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.Views.Layout.resources
+<<<<<<< HEAD
 C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\bin\Debug\XepLichThi.exe.config
 C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\bin\Debug\XepLichThi.exe
 C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\bin\Debug\XepLichThi.pdb
@@ -35,3 +36,6 @@ C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\obj\Debug\XepLic
 C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\obj\Debug\XepLichThi.csproj.CoreCompileInputs.cache
 C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\obj\Debug\XepLichThi.exe
 C:\Users\ADMIN\Source\Repos\hoangviet-dev\XepLichThi\XepLichThi\obj\Debug\XepLichThi.pdb
+=======
+D:\Hoc\KNPM\Nhóm\Tuần 11_11-05-2021\XepLichThi\XepLichThi\obj\Debug\XepLichThi.csprojAssemblyReference.cache
+>>>>>>> 5a3ce6d72b52f2404ce408a310b1beb00f126509
