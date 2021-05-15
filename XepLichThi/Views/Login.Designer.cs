@@ -52,7 +52,7 @@ namespace XepLichThi.Views
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(959, 575);
+            this.panel1.Size = new System.Drawing.Size(951, 514);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -62,7 +62,7 @@ namespace XepLichThi.Views
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(186, 77);
+            this.panel2.Location = new System.Drawing.Point(182, 47);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(582, 430);
             this.panel2.TabIndex = 0;
@@ -121,11 +121,13 @@ namespace XepLichThi.Views
             // buttonCustom1
             // 
             this.buttonCustom1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
+            this.buttonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCustom1.Location = new System.Drawing.Point(119, 20);
             this.buttonCustom1.Name = "buttonCustom1";
             this.buttonCustom1.Size = new System.Drawing.Size(333, 60);
             this.buttonCustom1.TabIndex = 0;
             this.buttonCustom1.Title = "ĐĂNG NHẬP";
+            this.buttonCustom1.ButtonClick += new System.EventHandler(this.buttonCustom1_Click);
             // 
             // label1
             // 
@@ -145,7 +147,7 @@ namespace XepLichThi.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(983, 599);
+            this.ClientSize = new System.Drawing.Size(975, 538);
             this.Controls.Add(this.panel1);
             this.Name = "Login";
             this.Text = "Đăng nhập";
