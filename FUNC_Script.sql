@@ -660,7 +660,7 @@ TIM KIEM PHONG THI
 RETURN TABLE
 	KET QUA TRA VE	
 */
-IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_LPT_Tim_Kiem'))
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_PT_Tim_Kiem'))
 	DROP FUNCTION func_PT_Tim_Kiem
 GO
 
