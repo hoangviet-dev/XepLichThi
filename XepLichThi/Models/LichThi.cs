@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,22 @@ namespace XepLichThi.Models
             HinhThuc = hinhThuc;
         }
 
+        [DisplayName("Mã lịch thi")]
         public string MaLichThi { get; set; }
+
+        [DisplayName("Mã lớp học phần")]
         public string MaLopHocPhan { get; set; }
+
+        [DisplayName("Ngày thi")]
         public DateTime NgayThi { get; set; }
+
+        [DisplayName("Thời gian")]
         public int ThoiGian { get; set; }
+
+        [DisplayName("Mã phòng thi")]
         public string MaPhongThi { get; set; }
+
+        [DisplayName("Hình thức")]
         public string HinhThuc { get; set; }
     }
 }

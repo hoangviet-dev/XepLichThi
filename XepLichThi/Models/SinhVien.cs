@@ -15,7 +15,7 @@ namespace XepLichThi.Models
         [DisplayName("Tên sinh viên")]
         public string TenSinhVien { get; set; }
 
-        [DisplayName("Ngày Sinh")]
+        [DisplayName("Ngày sinh")]
         public DateTime NgaySinh { get; set; }
  
         public SinhVien(string maSinhVien, string tenSinhVien, DateTime ngaySinh)
