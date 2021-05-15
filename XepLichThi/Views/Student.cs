@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace XepLichThi.Views
 {
-    public partial class Login : Form
+    public partial class Student : Form
     {
-        public Login()
+        public Student()
         {
             InitializeComponent();
-            lblNotification.Text = "";
         }
     }
 }
