@@ -14,7 +14,6 @@ namespace XepLichThi.Models
             LoaiPhongThi = loaiPhongThi;
             SoChoNgoi = soChoNgoi;
         }
-
         public string MaPhongThi { get; set; }
         public string LoaiPhongThi { get; set; }
         public int SoChoNgoi { get; set; }
