@@ -93,6 +93,12 @@
     <Compile Include="Views\Controls\MenuItemControl.Designer.cs">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\TableCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\TableCustom.Designer.cs">
+      <DependentUpon>TableCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\TextboxCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\MenuItemControl.resx">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\TableCustom.resx">
+      <DependentUpon>TableCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\TextboxCustom.resx">
       <DependentUpon>TextboxCustom.cs</DependentUpon>
