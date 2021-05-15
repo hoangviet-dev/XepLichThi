@@ -386,6 +386,7 @@ RETURN Result
 	0	THEM THANH CONG
 	-1	DU LIEU TRONG
 	-2	TRUNG MA PHONG THI
+	-3	LOAI PHONG THI KHONG TON TAI
 	
 */
 IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'proc_PT_Them'))
@@ -394,7 +395,7 @@ GO
 
 CREATE PROC proc_PT_Them (
 	@MaPhongThi nvarchar(50)
-	,@LoaiPhongThi nvarchar(50)
+	,@MaLoaiPhongThi nvarchar(50)
 	,@SoChoNgoi int
 	,@Result int OUT
 )
@@ -403,7 +404,7 @@ BEGIN
 	SET NOCOUNT ON
 
 	IF @MaPhongThi IS NULL OR @MaPhongThi = '' OR
-		@LoaiPhongThi IS NULL OR @LoaiPhongThi = '' OR
+		@MaLoaiPhongThi IS NULL OR @MaLoaiPhongThi = '' OR
 		@SoChoNgoi IS NULL
 	BEGIN
 		SET @Result = -1
@@ -416,7 +417,9 @@ BEGIN
 		RETURN
 	END
 
-	INSERT INTO PhongThi(MaPhongThi,LoaiPhongThi,SoChoNgoi) VALUES (@MaPhongThi, @LoaiPhongThi, @SoChoNgoi)
+	IF NOT(EXISTS(SELECT * FROM LoaiPhongThi WHERE MaLoaiPhongThi = @MaLoaiPhongThi))
+
+	INSERT INTO PhongThi(MaPhongThi,MaLoaiPhongThi,SoChoNgoi) VALUES (@MaPhongThi, @MaLoaiPhongThi, @SoChoNgoi)
 	SET @Result = 0
 	RETURN
 END
@@ -436,7 +439,7 @@ GO
 
 CREATE PROC proc_PT_Sua (
 	@MaPhongThi nvarchar(50)
-	,@LoaiPhongThi nvarchar(50)
+	,@MaLoaiPhongThi nvarchar(50)
 	,@SoChoNgoi int
 	,@Result int OUT
 )
@@ -445,7 +448,7 @@ BEGIN
 	SET NOCOUNT ON
 
 	IF @MaPhongThi IS NULL OR @MaPhongThi = '' OR
-		@LoaiPhongThi IS NULL OR @LoaiPhongThi = '' OR
+		@MaLoaiPhongThi IS NULL OR @MaLoaiPhongThi = '' OR
 		@SoChoNgoi IS NULL
 	BEGIN
 		SET @Result = -1
@@ -459,7 +462,7 @@ BEGIN
 	END
 
 	UPDATE PhongThi
-	SET	LoaiPhongThi = @LoaiPhongThi
+	SET	MaLoaiPhongThi = @MaLoaiPhongThi
 		,SoChoNgoi = @SoChoNgoi
 	WHERE MaPhongThi = @MaPhongThi
 	SET @Result = 0
@@ -520,8 +523,158 @@ CREATE FUNCTION func_PT_Tim_Kiem (
 RETURNS TABLE
 AS
 	RETURN(
-		SELECT * FROM PhongThi
+		SELECT MaPhongThi, LoaiPhongThi.LoaiPhongThi, SoChoNgoi
+		FROM PhongThi JOIN LoaiPhongThi ON PhongThi.MaLoaiPhongThi = LoaiPhongThi.MaLoaiPhongThi
 		WHERE MaPhongThi LIKE CONCAT('%',@In,'%') OR LoaiPhongThi LIKE CONCAT('%',@In,'%')
+	)
+GO
+
+/*
+THEM LOAI PHONG THI
+
+RETURN Result
+	0	THEM THANH CONG
+	-1	DU LIEU TRONG
+	-2	TRUNG MA LOAI PHONG THI
+	
+*/
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'proc_LPT_Them'))
+	DROP PROC proc_LPT_Them
+GO
+
+CREATE PROC proc_LPT_Them (
+	@MaLoaiPhongThi nvarchar(50)
+	,@LoaiPhongThi nvarchar(50)
+	,@ChiTiet nvarchar(50)
+	,@Result int OUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	IF @MaLoaiPhongThi IS NULL OR @MaLoaiPhongThi = '' OR
+		@LoaiPhongThi IS NULL OR @LoaiPhongThi = '' 
+	BEGIN
+		SET @Result = -1
+		RETURN
+	END
+
+	IF EXISTS(SELECT * FROM LoaiPhongThi WHERE MaLoaiPhongThi = @MaLoaiPhongThi)
+	BEGIN
+		SET @Result = -2
+		RETURN
+	END
+
+	INSERT INTO LoaiPhongThi(MaLoaiPhongThi,LoaiPhongThi,ChiTiet) VALUES (@MaLoaiPhongThi, @LoaiPhongThi, @ChiTiet)
+	SET @Result = 0
+	RETURN
+END
+GO
+
+/*
+SUA PHONG THI
+
+RETURN Result
+	0: sửa thành công
+	-1: dữ liệu trống
+	-2: không có mã loại phòng thi
+
+*/
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'proc_PT_Sua'))
+	DROP PROC proc_PT_Sua
+GO
+
+CREATE PROC proc_PT_Sua (
+	@MaLoaiPhongThi nvarchar(50)
+	,@LoaiPhongThi nvarchar(50)
+	,@ChiTiet nvarchar(50)
+	,@Result int OUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	IF @MaLoaiPhongThi IS NULL OR @MaLoaiPhongThi = '' OR
+		@MaLoaiPhongThi IS NULL OR @MaLoaiPhongThi = ''
+	BEGIN
+		SET @Result = -1
+		RETURN
+	END
+
+	IF NOT(EXISTS(SELECT * FROM LoaiPhongThi WHERE MaLoaiPhongThi = @MaLoaiPhongThi))
+	BEGIN
+		SET @Result = -2
+		RETURN
+	END
+
+	UPDATE LoaiPhongThi
+	SET	LoaiPhongThi = @LoaiPhongThi
+		,ChiTiet = @ChiTiet
+	WHERE MaLoaiPhongThi = @MaLoaiPhongThi
+	SET @Result = 0
+END
+GO
+
+/*
+XOA PHONG THI
+
+RETURN Result
+	0: xóa thành công
+	-1: dữ liệu trống
+	-2: không có mã loại phòng thi
+
+*/
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'proc_LPT_Xoa'))
+	DROP PROC proc_LPT_Xoa
+GO
+
+CREATE PROC proc_LPT_Xoa (
+	@MaLoaiPhongThi nvarchar(50)
+	,@Result int OUT
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	IF @MaLoaiPhongThi IS NULL OR @MaLoaiPhongThi = ''
+	BEGIN
+		SET @Result = -1
+		RETURN
+	END
+
+	IF NOT(EXISTS(SELECT * FROM LoaiPhongThi WHERE MaLoaiPhongThi = @MaLoaiPhongThi))
+	BEGIN
+		SET @Result = -2
+		RETURN
+	END
+
+	DELETE FROM LoaiPhongThi
+	WHERE MaLoaiPhongThi = @MaLoaiPhongThi
+	SET @Result = 0
+END
+GO
+
+/*
+TIM KIEM PHONG THI
+
+RETURN TABLE
+	KET QUA TRA VE	
+*/
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_LPT_Tim_Kiem'))
+	DROP FUNCTION func_PT_Tim_Kiem
+GO
+
+CREATE FUNCTION func_PT_Tim_Kiem (
+	@In nvarchar(50)
+)
+RETURNS TABLE
+AS
+	RETURN(
+		SELECT	*
+		FROM	LoaiPhongThi
+		WHERE	MaLoaiPhongThi LIKE CONCAT('%',@In,'%')
+			OR LoaiPhongThi LIKE CONCAT('%',@In,'%')
+			OR ChiTiet LIKE CONCAT('%',@In,'%')
 	)
 GO
 
@@ -1076,7 +1229,8 @@ BEGIN
 
 	DECLARE @LoaiPhongThi nvarchar(50)
 	SELECT	@LoaiPhongThi = LoaiPhongThi
-	FROM	PhongThi
+	FROM	PhongThi AS PT
+		JOIN LoaiPhongThi AS LPT ON PT.MaLoaiPhongThi = LPT.MaLoaiPhongThi
 	WHERE	MaPhongThi = @MaPhongThi
 	IF CHARINDEX(@HinhThuc, @LoaiPhongThi) = 0
 	BEGIN
