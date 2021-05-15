@@ -78,7 +78,7 @@ namespace XepLichThi.Models
 
         public object[] excuteProc(string procName, SqlParam[] parameterIn = null, SqlParam[] parameterOut = null)
         {
-            object[] data = null;
+            object[] data = new object[parameterOut.Length];
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(procName, connection))
             {
@@ -99,42 +99,21 @@ namespace XepLichThi.Models
                     }
                 }
 
+                Console.WriteLine(cmd.Parameters.Count);
+                
                 connection.Open();
                 cmd.ExecuteNonQuery();
 
                 for (int i = 0; i < parameterOut.Length; i++)
                 {
-                    data[i] = (object)cmd.Parameters[parameterOut[i].Name].Value;
+                    data[i] = cmd.Parameters[parameterOut[i].Name].Value;
                 }
 
                 connection.Close();
             }
             return data;
         }
-
-        public int executeLogin(string username, string password)
-        {
-            int res = 0;
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand("EXEC proc_TK_Dang_Nhap @UserName,@Password,@Type OUT", conn))
-            {
-                cmd.CommandType = CommandType.Text;
-
-                cmd.Parameters.AddWithValue("@UserName", username);
-                cmd.Parameters.AddWithValue("@Password", password);
-                cmd.Parameters.AddWithValue("@Type", 1).Direction = ParameterDirection.Output;
-
-                Console.WriteLine(cmd.Parameters);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-
-                res = Convert.ToInt32(cmd.Parameters["@Type"].Value);
-                conn.Close();
-            }
-            return res;
-        }
-
+               
         public class SqlParam
         {
             public string Name;

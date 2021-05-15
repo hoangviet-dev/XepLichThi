@@ -54,8 +54,7 @@ namespace XepLichThi.Controllers
 
             object[] data = provider.excuteProc(sql, paramIn, paramOut);
 
-            Console.WriteLine(data);
-            return false;
+            return (int)data[0] >= 0 ? true : false;
         }
 
     }
