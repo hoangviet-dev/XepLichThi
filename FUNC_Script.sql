@@ -1458,3 +1458,31 @@ BEGIN
 	RETURN
 END
 GO
+
+/*
+	KIEM TRA SO LUONG SINH VIEN CUNG HOC 2 LOP HOC PHAN
+	OUTPUT Result:	SO LUONG SINH VIEN
+*/
+IF EXISTS(SELECT * FROM sys.objects WHERE name = 'func_Kiem_Tra_Hoc_Cung')
+	DROP FUNCTION func_Kiem_Tra_Hoc_Cung
+GO
+
+CREATE FUNCTION func_Kiem_Tra_Hoc_Cung (
+	@MaLopHocPhan1 nvarchar(50)
+	,@MaLopHocPhan2 nvarchar(50)
+)
+RETURNS int
+AS
+BEGIN
+	DECLARE @Res int
+
+	SELECT	@Res = COUNT(MaSinhVien)
+	FROM	DanhSachSVLopHP AS DS1
+	WHERE	MaLopHocPhan = @MaLopHocPhan1
+		AND MaSinhVien IN (SELECT	MaSinhVien
+							FROM	DanhSachSVLopHP AS DS2
+							WHERE	MaLopHocPhan = @MaLopHocPhan2
+							)
+	RETURN @Res
+END
+GO
