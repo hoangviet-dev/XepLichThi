@@ -572,7 +572,7 @@ END
 GO
 
 /*
-SUA PHONG THI
+SUA LOAI PHONG THI
 
 RETURN Result
 	0: sửa thành công
@@ -580,11 +580,11 @@ RETURN Result
 	-2: không có mã loại phòng thi
 
 */
-IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'proc_PT_Sua'))
-	DROP PROC proc_PT_Sua
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'proc_LPT_Sua'))
+	DROP PROC proc_LPT_Sua
 GO
 
-CREATE PROC proc_PT_Sua (
+CREATE PROC proc_LPT_Sua (
 	@MaLoaiPhongThi nvarchar(50)
 	,@LoaiPhongThi nvarchar(50)
 	,@ChiTiet nvarchar(50)
@@ -616,7 +616,7 @@ END
 GO
 
 /*
-XOA PHONG THI
+XOA LOAI PHONG THI
 
 RETURN Result
 	0: xóa thành công
@@ -655,16 +655,16 @@ END
 GO
 
 /*
-TIM KIEM PHONG THI
+TIM KIEM LOAI PHONG THI
 
 RETURN TABLE
 	KET QUA TRA VE	
 */
-IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_PT_Tim_Kiem'))
-	DROP FUNCTION func_PT_Tim_Kiem
+IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_LPT_Tim_Kiem'))
+	DROP FUNCTION func_LPT_Tim_Kiem
 GO
 
-CREATE FUNCTION func_PT_Tim_Kiem (
+CREATE FUNCTION func_LPT_Tim_Kiem (
 	@In nvarchar(50)
 )
 RETURNS TABLE
@@ -964,15 +964,14 @@ IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_LopHP_Tim_Kiem'))
 GO
 
 CREATE FUNCTION func_LopHP_Tim_Kiem (
-	@MaLopHocPhan nvarchar(50)
-	,@TenLopHocPhan nvarchar(50)
+	@In nvarchar(50)
 )
 RETURNS TABLE
 AS
 	RETURN(
 		SELECT *
 		FROM	LopHocPhan
-		WHERE	MaLopHocPhan LIKE CONCAT('%',@MaLopHocPhan,'%') OR TenLopHocPhan LIKE CONCAT('%',@TenLopHocPhan,'%')
+		WHERE	MaLopHocPhan LIKE CONCAT('%',@In,'%') OR TenLopHocPhan LIKE CONCAT('%',@In,'%')
 	)
 GO
 
