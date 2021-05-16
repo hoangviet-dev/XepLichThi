@@ -88,5 +88,25 @@ namespace XepLichThi.Controllers
 
             return res;
         }
+
+        public int editData(string maHP, string tenHP, int soTC)
+        {
+            string sql = "EXEC proc_LopHP_Sua @MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @res OUT";
+
+            SqlParam[] paramIn =
+            {
+                new SqlParam("@MaLopHocPhan", maHP),
+                new SqlParam("@TenLopHocPhan", tenHP),
+                new SqlParam("@SoTinChi", soTC)
+            };
+            SqlParam[] paramOut = { new SqlParam("@res", 0) };
+            object[] obj = dataProvider.excuteProc(sql, paramIn, paramOut);
+
+            //0: sửa thành công
+            //- 1: dữ liệu trống
+            // - 2: không có mã lớp học phần
+
+            return (int)obj[0];
+        }
     }
 }
