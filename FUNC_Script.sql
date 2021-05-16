@@ -1512,6 +1512,7 @@ BEGIN
 	FROM	DanhSachSVLopHP
 	WHERE	MaLopHocPhan LIKE @Key
 	GROUP BY MaLopHocPhan
+	ORDER BY MaLopHocPhan DESC
 
 	RETURN
 END
@@ -1545,6 +1546,7 @@ BEGIN
 	WHERE	DS1.MaLopHocPhan LIKE @Key
 		AND DS2.MaLopHocPhan LIKE @Key
 		AND DS1.MaLopHocPhan != DS2.MaLopHocPhan
+	ORDER BY DS1.MaLopHocPhan DESC
 
 	RETURN
 END
