@@ -33,12 +33,6 @@ namespace XepLichThi.Views.Controls
         [Description("Invoked when user clicks button")]
         public event EventHandler DeleteAction;
 
-        private void btnXoa_Load(object sender, EventArgs e)
-        {
-            if (this.DeleteAction != null)
-                DeleteAction(this, e);
-        }
-
         public string Selected
         {
             get
@@ -61,6 +55,12 @@ namespace XepLichThi.Views.Controls
                 btnXoa.Enabled = false;
             }
             lblMa.Text = select;
+        }
+
+        private void btnXoa_ButtonClick(object sender, EventArgs e)
+        {
+            if (this.DeleteAction != null)
+                DeleteAction(this, e);
         }
     }
 }

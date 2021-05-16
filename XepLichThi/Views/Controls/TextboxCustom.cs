@@ -39,7 +39,11 @@ namespace XepLichThi.Views.Controls
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public override string Text
         {
-            get => textBox1.Text;
+            get
+            {
+                if (textBox1.Text == placeholder) return "";
+                return textBox1.Text;
+            }
             set {
                 textBox1.Text = value;
                 if (textBox1.Text == placeholder)

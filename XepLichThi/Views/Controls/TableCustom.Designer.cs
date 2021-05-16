@@ -35,8 +35,8 @@ namespace XepLichThi.Views.Controls
             this.dtgvTable = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblMa = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.btnXoa = new XepLichThi.Views.Controls.ButtonSmallCustom();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).BeginInit();
@@ -108,15 +108,6 @@ namespace XepLichThi.Views.Controls
             this.lblMa.TabIndex = 1;
             this.lblMa.Text = "Mã";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 473);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(865, 52);
-            this.panel2.TabIndex = 0;
-            // 
             // btnXoa
             // 
             this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -129,7 +120,16 @@ namespace XepLichThi.Views.Controls
             this.btnXoa.Size = new System.Drawing.Size(158, 50);
             this.btnXoa.TabIndex = 0;
             this.btnXoa.Title = "Xoá";
-            this.btnXoa.Load += new System.EventHandler(this.btnXoa_Load);
+            this.btnXoa.ButtonClick += new System.EventHandler(this.btnXoa_ButtonClick);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 473);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(865, 52);
+            this.panel2.TabIndex = 0;
             // 
             // TableCustom
             // 

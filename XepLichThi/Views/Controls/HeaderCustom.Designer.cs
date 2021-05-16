@@ -30,9 +30,9 @@ namespace XepLichThi.Views.Controls
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnThem = new XepLichThi.Views.Controls.ButtonSmallCustom();
             this.btnTimKiem = new XepLichThi.Views.Controls.ButtonSmallCustom();
             this.txtTimKiem = new XepLichThi.Views.Controls.TextboxCustom();
-            this.btnThem = new XepLichThi.Views.Controls.ButtonSmallCustom();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +45,18 @@ namespace XepLichThi.Views.Controls
             this.panel1.Size = new System.Drawing.Size(403, 60);
             this.panel1.TabIndex = 0;
             // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.Transparent;
+            this.btnThem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThem.Location = new System.Drawing.Point(207, 5);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(190, 50);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Title = "THÊM";
+            this.btnThem.ButtonClick += new System.EventHandler(this.btnThem_ButtonClick);
+            // 
             // btnTimKiem
             // 
             this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
@@ -55,6 +67,7 @@ namespace XepLichThi.Views.Controls
             this.btnTimKiem.Size = new System.Drawing.Size(190, 50);
             this.btnTimKiem.TabIndex = 2;
             this.btnTimKiem.Title = "TÌM KIẾM";
+            this.btnTimKiem.ButtonClick += new System.EventHandler(this.btnTimKiem_ButtonClick);
             // 
             // txtTimKiem
             // 
@@ -66,17 +79,6 @@ namespace XepLichThi.Views.Controls
             this.txtTimKiem.Placeholder = "Tìm kiếm";
             this.txtTimKiem.Size = new System.Drawing.Size(288, 52);
             this.txtTimKiem.TabIndex = 1;
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.Transparent;
-            this.btnThem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThem.Location = new System.Drawing.Point(207, 5);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(190, 50);
-            this.btnThem.TabIndex = 0;
-            this.btnThem.Title = "THÊM";
             // 
             // HeaderCustom
             // 

@@ -17,19 +17,30 @@ namespace XepLichThi.Views.Controls
             InitializeComponent();
         }
 
-        public ButtonSmallCustom BtnTimKiem
+        public string GetTimKiem
         {
-            get => btnTimKiem;
+            get => txtTimKiem.Text;
+            set => txtTimKiem.Text = value;
         }
 
-        public TextboxCustom TxtTimKiem
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("Invoked when user clicks button")]
+        public event EventHandler SearchClick;
+
+        private void btnTimKiem_ButtonClick(object sender, EventArgs e)
         {
-            get => txtTimKiem;
+            SearchClick?.Invoke(sender, e);
         }
 
-        public ButtonSmallCustom BtnThem
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("Invoked when user clicks button")]
+        public event EventHandler AddClick;
+
+        private void btnThem_ButtonClick(object sender, EventArgs e)
         {
-            get => btnThem;
+            AddClick?.Invoke(sender, e);
         }
     }
 }

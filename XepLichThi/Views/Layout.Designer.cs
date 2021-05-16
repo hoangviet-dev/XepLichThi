@@ -53,6 +53,7 @@ namespace XepLichThi.Views
             this.tblCus.Name = "tblCus";
             this.tblCus.Size = new System.Drawing.Size(1024, 426);
             this.tblCus.TabIndex = 0;
+            this.tblCus.DeleteAction += new System.EventHandler(this.tblCus_DeleteAction);
             // 
             // Layout
             // 

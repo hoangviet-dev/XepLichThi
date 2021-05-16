@@ -16,15 +16,23 @@ namespace XepLichThi.Views
         {
             InitializeComponent();
             sinhVien = new CtlSinhVien();
-            loadData("");
+            LoadData("");
 
         }
 
-        private void loadData(string search)
+        public override void LoadData(string search)
         {
             data = sinhVien.getData(search);
             BindData();
         }
 
+        protected override void DeleteData()
+        {
+            if (ConfirmDelete())
+            {
+                sinhVien.deleteData(Seleted());
+                BindData();
+            }
+        }
     }
 }

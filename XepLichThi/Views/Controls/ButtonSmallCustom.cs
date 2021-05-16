@@ -39,12 +39,9 @@ namespace XepLichThi.Views.Controls
         [Description("Invoked when user clicks button")]
         public event EventHandler ButtonClick;
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-            if (this.ButtonClick != null)
-                this.ButtonClick(this, e);
+            this.ButtonClick?.Invoke(this, e);
         }
-
     }
 }

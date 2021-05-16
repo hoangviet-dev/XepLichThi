@@ -16,27 +16,29 @@ namespace XepLichThi.Views
 
         List<Object> lMenu = new List<Object>();
         Object oldOb = null;
+        Layout layout = null;
 
         public Main()
         {
             InitializeComponent();
             lblTitle.Text = "";
             createMenu();
+            headerCustom1.Hide();
         }
 
         public void createMenu()
         {
-            lMenu.Add(new Menu("SINH VIÊN", "XepLichThi.Views.SinhVien"));
-            lMenu.Add(new Menu("LỚP HỌC PHẦN", "XepLichThi.Views.LopHocPhan"));
-            lMenu.Add(new Menu("PHÒNG THI", "XepLichThi.Views.PhongThi"));
-            lMenu.Add(new Menu("DANH MỤC", "XepLichThi.Views.DanhMuc"));
-            lMenu.Add(new Menu("XẾP LỊCH THI", "XepLichThi.Views.XepLich"));
+            lMenu.Add(new Menu("SINH VIÊN", "XepLichThi.Views.SinhVien", true));
+            lMenu.Add(new Menu("LỚP HỌC PHẦN", "XepLichThi.Views.LopHocPhan", true));
+            lMenu.Add(new Menu("PHÒNG THI", "XepLichThi.Views.PhongThi", true));
+            lMenu.Add(new Menu("DANH MỤC", "XepLichThi.Views.DanhMuc", false));
+            lMenu.Add(new Menu("XẾP LỊCH THI", "XepLichThi.Views.XepLich", false));
 
             pnlMenu.Controls.Clear();
 
             foreach(Menu item in lMenu)
             {
-                MenuItemControl mi = new MenuItemControl(item.Title, item.ClassName);
+                MenuItemControl mi = new MenuItemControl(item.Title, item.ClassName, item.Header);
                 mi.Dock = DockStyle.Top;
                 pnlMenu.Controls.Add(mi);
                 mi.BringToFront();
@@ -53,6 +55,13 @@ namespace XepLichThi.Views
                 lblTitle.Text = m.Text;
                 pnlView.Controls.Clear();
                 var objectType = Type.GetType(m.ClassName);
+                if (m.Header)
+                {
+                    headerCustom1.Show();
+                } else
+                {
+                    headerCustom1.Hide();
+                }
                 if (objectType != null)
                 {
                     Form frm = (Form)Activator.CreateInstance(objectType);
@@ -62,6 +71,7 @@ namespace XepLichThi.Views
                     frm.Dock = DockStyle.Fill;
                     pnlView.Controls.Add(frm);
                     frm.Show();
+                    layout = (Layout)frm;
                 }
                 if (oldOb != null)
                 {
@@ -70,27 +80,41 @@ namespace XepLichThi.Views
                 oldOb = m;
             }
         }
+
+        private void headerCustom1_SearchClick(object sender, EventArgs e)
+        {
+            string search = headerCustom1.GetTimKiem;
+            if (layout != null)
+            {
+                layout.LoadData(search);
+            }
+        }
     }
     public class Menu
     {
         string title;
         string className;
-        public Menu(string title, string className)
+        bool header;
+        public Menu(string title, string className, bool header)
         {
             this.title = title;
             this.className = className;
+            this.header = header;
         }
 
         public string Title
         {
             get => title;
-            set => title = value;
         }
 
         public string ClassName
         {
             get => className;
-            set => className = value;
+        }
+
+        public bool Header
+        {
+            get => header;
         }
     }
 }

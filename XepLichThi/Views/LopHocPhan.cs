@@ -20,7 +20,7 @@ namespace XepLichThi.Views
             LoadData("");
         }
 
-        private void LoadData(string search)
+        public void LoadData(string search)
         {
             data = lopHocPhan.getData(search);
             BindData();

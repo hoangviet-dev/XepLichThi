@@ -15,15 +15,22 @@ namespace XepLichThi.Views.Controls
 
         private string className;
         private bool choose = false;
+        private bool header;
         public MenuItemControl()
         {
             InitializeComponent();
         }
 
-        public MenuItemControl(string title, string className) : this()
+        public MenuItemControl(string title, string className, bool header) : this()
         {
             label1.Text = title;
             this.className = className;
+            this.header = header;
+        }
+
+        public bool Header
+        {
+            get => header;
         }
 
         public string ClassName

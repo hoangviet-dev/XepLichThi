@@ -31,11 +31,11 @@ namespace XepLichThi.Views
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlView = new System.Windows.Forms.Panel();
-            this.headerCustom1 = new XepLichThi.Views.Controls.HeaderCustom();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.headerCustom1 = new XepLichThi.Views.Controls.HeaderCustom();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -56,19 +56,10 @@ namespace XepLichThi.Views
             // 
             this.pnlView.BackColor = System.Drawing.Color.White;
             this.pnlView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlView.Location = new System.Drawing.Point(222, 112);
+            this.pnlView.Location = new System.Drawing.Point(222, 101);
             this.pnlView.Name = "pnlView";
-            this.pnlView.Size = new System.Drawing.Size(1217, 338);
+            this.pnlView.Size = new System.Drawing.Size(1217, 349);
             this.pnlView.TabIndex = 2;
-            // 
-            // headerCustom1
-            // 
-            this.headerCustom1.BackColor = System.Drawing.Color.White;
-            this.headerCustom1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerCustom1.Location = new System.Drawing.Point(222, 42);
-            this.headerCustom1.Name = "headerCustom1";
-            this.headerCustom1.Size = new System.Drawing.Size(1217, 70);
-            this.headerCustom1.TabIndex = 0;
             // 
             // pnlMenu
             // 
@@ -112,6 +103,18 @@ namespace XepLichThi.Views
             this.label1.TabIndex = 0;
             this.label1.Text = "HUSC - XẾP LỊCH THI";
             // 
+            // headerCustom1
+            // 
+            this.headerCustom1.AutoSize = true;
+            this.headerCustom1.BackColor = System.Drawing.Color.White;
+            this.headerCustom1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerCustom1.GetTimKiem = "Tìm kiếm";
+            this.headerCustom1.Location = new System.Drawing.Point(222, 42);
+            this.headerCustom1.Name = "headerCustom1";
+            this.headerCustom1.Size = new System.Drawing.Size(1217, 59);
+            this.headerCustom1.TabIndex = 0;
+            this.headerCustom1.SearchClick += new System.EventHandler(this.headerCustom1_SearchClick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +125,7 @@ namespace XepLichThi.Views
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
