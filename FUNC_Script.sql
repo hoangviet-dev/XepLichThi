@@ -817,15 +817,14 @@ IF (EXISTS(SELECT * FROM sys.objects WHERE name = 'func_DK_Tim_Kiem'))
 GO
 
 CREATE FUNCTION func_DK_Tim_Kiem (
-	@MaDieuKien nvarchar(50)
-	,@TenDieuKien nvarchar(50)
+	@In nvarchar(50)
 )
 RETURNS TABLE
 AS
 	RETURN(
 		SELECT * 
 		FROM DieuKien
-		WHERE MaDieuKien LIKE CONCAT('%',@MaDieuKien,'%') OR TenDieuKien LIKE CONCAT('%',@TenDieuKien,'%')
+		WHERE MaDieuKien LIKE CONCAT('%',@In,'%') OR TenDieuKien LIKE CONCAT('%',@In,'%')
 	)
 GO
 
