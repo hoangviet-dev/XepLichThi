@@ -31,23 +31,22 @@ namespace XepLichThi.Models
             return res;
         }
 
-        public DataTable excuteQuery(string query, object[] parameter = null)
+        public DataTable excuteQuery(string query, SqlParam[] parameter = null)
         {
             DataTable data = new DataTable();
             using(SqlConnection connection = new SqlConnection(connectionString))
+            using(SqlCommand cmd = new SqlCommand(query,connection))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query,connection);
                 if (parameter != null)
                 {
-                    List<string> names = getListNameParameter(query + " ");
-                    for(int i = 0; i < names.Count; i++)
+                    for(int i = 0; i < parameter.Length; i++)
                     {
-                        command.Parameters.AddWithValue(names[i], parameter[i]);
+                        cmd.Parameters.AddWithValue(parameter[i].Name, parameter[i].Value);
                     }
                 }
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 sqlDataAdapter.Fill(data);
                 connection.Close();
             }

@@ -18,9 +18,9 @@ namespace XepLichThi.Controllers
         }
         public List<LopHocPhan> getData(string search)
         {
-            string query = @"SELECT * FROM func_LopHP_Tim_Kiem(@search, @search)";      
+            string query = "SELECT * FROM func_LopHP_Tim_Kiem(@search)";      
             List<LopHocPhan> llhp = new List<LopHocPhan>();
-            DataTable dt = dataProvider.excuteQuery(query, new object[] {search, search });
+            DataTable dt = dataProvider.excuteQuery(query, new SqlParam[] { new SqlParam("@search", search) });
             DataRowCollection drc = dt.Rows;
             foreach (DataRow dr in drc)
             {
@@ -87,26 +87,6 @@ namespace XepLichThi.Controllers
             //-2: không có mã lớp học phần
 
             return res;
-        }
-
-        public int editData(string maHP, string tenHP, int soTC)
-        {
-            string sql = "EXEC proc_LopHP_Sua @MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @res OUT";
-
-            SqlParam[] paramIn =
-            {
-                new SqlParam("@MaLopHocPhan", maHP),
-                new SqlParam("@TenLopHocPhan", tenHP),
-                new SqlParam("@SoTinChi", soTC)
-            };
-            SqlParam[] paramOut = { new SqlParam("@res", 0) };
-            object[] obj = dataProvider.excuteProc(sql, paramIn, paramOut);
-
-            //0: sửa thành công
-            //- 1: dữ liệu trống
-            // - 2: không có mã lớp học phần
-
-            return (int)obj[0];
         }
     }
 }

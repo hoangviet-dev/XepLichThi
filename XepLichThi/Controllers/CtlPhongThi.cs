@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XepLichThi.Models;
+using static XepLichThi.Models.DataProvider;
 
 namespace XepLichThi.Controllers
 {
@@ -19,29 +20,73 @@ namespace XepLichThi.Controllers
 
         public List<PhongThi> getData(string search)
         {
-            List<PhongThi> res = new List<PhongThi>();
+            string query = "SELECT * FROM func_PT_Tim_Kiem (@In)";
 
-            string query = @"SELECT PT.MaPhongThi, LPT.LoaiPhongThi, PT.SoChoNgoi 
-                            FROM PhongThi AS PT
-	                        JOIN LoaiPhongThi AS LPT ON PT.MaLoaiPhongThi = LPT.MaLoaiPhongThi
-	                        WHERE PT.MaPhongThi LIKE @search or LPT.LoaiPhongThi LIKE @search";
+            List<PhongThi> phongThi = new List<PhongThi>();
+            DataTable dtb = dataProvider.excuteQuery(query, new SqlParam[] { new SqlParam("@In", search) });
+            DataRowCollection drc = dtb.Rows;
 
-            search = "%" + search + "%";
-            DataTable dataTable = dataProvider.excuteQuery(query, new object[] { search });
-            DataRowCollection rows = dataTable.Rows;
-            foreach(DataRow row in rows)
+            foreach (DataRow dr in drc)
             {
-                res.Add(new PhongThi(row[0].ToString(), row[1].ToString(), int.Parse(row[2].ToString())));
+                phongThi.Add(new PhongThi(dr[0].ToString(), dr[1].ToString(), int.Parse(dr[2].ToString())));
             }
 
-            return res;
+            return phongThi;
         }
 
-        public int deleteData(string MaPhongThi)
+        public int addData(string maPhongThi, string maLoaiPhongThi, int soChoNgoi)
         {
-            int res = 0;
+            string sql = "EXEC proc_PT_Them @MaPhongThi, @MaLoaiPhongThi, @SoChoNgoi, @Result OUT";
 
-            return res;
+            SqlParam[] paramIn =
+            {
+                new SqlParam("@MaPhongThi", maPhongThi),
+                new SqlParam("@MaLoaiPhongThi", maLoaiPhongThi),
+                new SqlParam("@SoChoNgoi", soChoNgoi)
+            };
+            SqlParam[] paramOut = { new SqlParam("@Result", 0) };
+
+            object[] res = dataProvider.excuteProc(sql, paramIn, paramOut);
+
+            //0: thêm thành công
+            //- 1: dữ liệu trống
+            // - 2: trùng mã phòng thi
+            //-3: mã loại phòng thi không tồn tại
+
+            return (int)res[0];
+        }
+
+        public int updateData(string maPhongThi, string maLoaiPhongThi, int soChoNgoi)
+        {
+            string proc = "EXEC proc_PT_Sua @MaPhongThi, @MaLoaiPhongThi, @SoChoNgoi, @Result OUT";
+
+            SqlParam[] paramIn =
+            {
+                new SqlParam("@MaPhongThi", maPhongThi),
+                new SqlParam("@MaLoaiPhongThi", maLoaiPhongThi),
+                new SqlParam("@SoChoNgoi", soChoNgoi)
+            };
+            SqlParam[] paramOut = { new SqlParam("@Result", 1) };
+
+            object[] res = dataProvider.excuteProc(proc, paramIn, paramOut);
+
+            return (int)res[0];
+        }
+
+        public int deleteData(string maPhongThi)
+        {
+            string sql = "EXEC proc_PT_Xoa @MaPhongThi, @Result OUT";
+
+            SqlParam[] paramIn = { new SqlParam("@MaPhongThi", maPhongThi) };
+            SqlParam[] paramOut = { new SqlParam("@Result", 0) };
+
+            object[] res = dataProvider.excuteProc(sql, paramIn, paramOut);
+
+            //0: xóa thành công
+            //- 1: dữ liệu trống
+            // - 2: không có mã phòng thi
+
+            return (int)res[0];
         }
     }
 }

@@ -23,7 +23,7 @@ namespace XepLichThi.Controllers
             DataTable table;
             List<SinhVien> list = new List<SinhVien>();
             string query = @"SELECT * FROM func_SV_Tim_Kiem(@search)";
-            table = dataProvider.excuteQuery(query, new object[]{search});
+            table = dataProvider.excuteQuery(query, new SqlParam[] {new SqlParam("@search", search)});
             DataRowCollection rows = table.Rows;
             foreach(DataRow row in rows)
             {
