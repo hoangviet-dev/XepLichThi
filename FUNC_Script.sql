@@ -1486,3 +1486,64 @@ BEGIN
 	RETURN @Res
 END
 GO
+/*
+	DANH SÁCH LỚP HỌC PHẦN NĂM HỌC @NamHoc, KỲ @Kỳ
+
+*/
+IF EXISTS(SELECT * FROM sys.objects WHERE name = 'func_Danh_Sach_Lop_Hoc_Phan')
+	DROP FUNCTION func_Danh_Sach_Lop_Hoc_Phan
+GO
+
+CREATE FUNCTION func_Danh_Sach_Lop_Hoc_Phan(
+	@NamHoc	nvarchar(50)
+	,@HocKy	int
+)
+RETURNS @Res TABLE(
+	MaLopHocPhan	nvarchar(50)
+)
+AS
+BEGIN
+	DECLARE	@Key	nvarchar(50)
+	SET	@Key = CONCAT(@NamHoc,'.',@HocKy,'%')
+	
+	INSERT INTO @Res
+	SELECT	MaLopHocPhan
+	FROM	DanhSachSVLopHP
+	WHERE	MaLopHocPhan LIKE @Key
+
+	RETURN
+END
+GO
+
+/*
+	DANH SÁCH CẶP LỚP HỌC PHẦN CÙNG NGƯỜI HỌC NĂM HỌC @NamHoc, KỲ @Kỳ
+
+*/
+IF EXISTS(SELECT * FROM sys.objects WHERE name = 'func_Danh_Sach_Lop_Hoc_Phan_Trung')
+	DROP FUNCTION func_Danh_Sach_Lop_Hoc_Phan_Trung
+GO
+
+CREATE FUNCTION func_Danh_Sach_Lop_Hoc_Phan_Trung(
+	@NamHoc	nvarchar(50)
+	,@HocKy	int
+)
+RETURNS @Res TABLE(
+	MaLopHocPhan1	nvarchar(50)
+	,MaLopHocPhan2	nvarchar(50)
+)
+AS
+BEGIN
+	DECLARE	@Key	nvarchar(50)
+	SET	@Key = CONCAT(@NamHoc,'.',@HocKy,'%')
+
+	INSERT INTO @Res
+	SELECT	DS1.MaLopHocPhan, DS2.MaLopHocPhan
+	FROM	DanhSachSVLopHP AS DS1
+		JOIN DanhSachSVLopHP AS DS2 ON DS1.MaSinhVien = DS2.MaSinhVien
+	WHERE	DS1.MaLopHocPhan LIKE @Key
+		AND DS2.MaLopHocPhan LIKE @Key
+		AND DS1.MaLopHocPhan != DS2.MaLopHocPhan
+
+	RETURN
+END
+GO
