@@ -25,5 +25,13 @@ namespace XepLichThi.Views
             data = phongThi.getData(search);
             BindData();
         }
+        protected override void DeleteData()
+        {
+            if (ConfirmDelete())
+            {
+                phongThi.deleteData(Seleted());
+                BindData();
+            }
+        }
     }
 }

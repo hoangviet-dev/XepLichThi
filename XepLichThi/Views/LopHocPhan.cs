@@ -25,5 +25,12 @@ namespace XepLichThi.Views
             data = lopHocPhan.getData(search);
             BindData();
         }
+        public override void DeleteData()
+        {
+            if(ConfirmDelete())
+            {
+                lopHocPhan.deleteData(Seleted());
+                BindData();
+            }
+        }
     }
-}
