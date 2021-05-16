@@ -1500,6 +1500,7 @@ CREATE FUNCTION func_Danh_Sach_Lop_Hoc_Phan(
 )
 RETURNS @Res TABLE(
 	MaLopHocPhan	nvarchar(50)
+	,SoLuongSV	int
 )
 AS
 BEGIN
@@ -1507,9 +1508,10 @@ BEGIN
 	SET	@Key = CONCAT(@NamHoc,'.',@HocKy,'%')
 	
 	INSERT INTO @Res
-	SELECT	MaLopHocPhan
+	SELECT	MaLopHocPhan, COUNT(MaSinhVien)
 	FROM	DanhSachSVLopHP
 	WHERE	MaLopHocPhan LIKE @Key
+	GROUP BY MaLopHocPhan
 
 	RETURN
 END
