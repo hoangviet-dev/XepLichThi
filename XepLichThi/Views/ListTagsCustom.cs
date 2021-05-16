@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace XepLichThi.Views
 {
-    public partial class DanhMuc : Form
+    public partial class ListTagsCustom : UserControl
     {
-        public DanhMuc()
+        public ListTagsCustom()
         {
             InitializeComponent();
         }
