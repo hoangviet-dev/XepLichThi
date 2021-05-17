@@ -849,6 +849,7 @@ CREATE PROC proc_LopHP_Them (
 	@MaLopHocPhan nvarchar(50)
 	,@TenLopHocPhan nvarchar(50)
 	,@SoTinChi int
+	,@HinhThucThi nvarchar(50)
 	,@Result int OUT
 )
 AS
@@ -857,6 +858,7 @@ BEGIN
 
 	IF @MaLopHocPhan IS NULL OR @MaLopHocPhan = '' OR
 		@TenLopHocPhan IS NULL OR @TenLopHocPhan = '' OR 
+		@HinhThucThi IS NULL OR @HinhThucThi = '' OR
 		@SoTinChi IS NULL
 	BEGIN
 		SET @Result = -1
@@ -869,7 +871,7 @@ BEGIN
 		RETURN
 	END
 
-	INSERT LopHocPhan (MaLopHocPhan, TenLopHocPhan, SoTinChi) VALUES (@MaLopHocPhan, @TenLopHocPhan, @SoTinChi)
+	INSERT LopHocPhan (MaLopHocPhan, TenLopHocPhan, SoTinChi, HinhThucThi) VALUES (@MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @HinhThucThi)
 	SET @Result = 0
 END
 GO
@@ -890,6 +892,7 @@ CREATE PROC proc_LopHP_Sua (
 	@MaLopHocPhan nvarchar(50)
 	,@TenLopHocPhan nvarchar(50)
 	,@SoTinChi int
+	,@HinhThucThi nvarchar(50)
 	,@Result int OUT
 )
 AS
@@ -913,6 +916,7 @@ BEGIN
 	UPDATE LopHocPhan
 	SET	TenLopHocPhan = @TenLopHocPhan
 		,SoTinChi = @SoTinChi
+		,HinhThucThi = @HinhThucThi
 	WHERE MaLopHocPhan = @MaLopHocPhan
 	SET @Result = 0 
 END
