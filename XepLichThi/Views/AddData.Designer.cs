@@ -46,6 +46,7 @@ namespace XepLichThi.Views
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
             this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.buttonSmallCustom1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
