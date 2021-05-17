@@ -18,6 +18,10 @@ namespace XepLichThi.Controllers
             dataProvider = new DataProvider();
         }
 
+        public DataTable excuteQuery(string query, SqlParam[] sqlParams)
+        {
+            return dataProvider.excuteQuery(query, sqlParams);
+        }
         public List<PhongThi> getData(string search)
         {
             string query = "SELECT * FROM func_PT_Tim_Kiem (@In)";
