@@ -95,6 +95,14 @@ namespace XepLichThi.Views
                 layout.LoadData(search);
             }
         }
+
+        private void headerCustom1_AddClick(object sender, EventArgs e)
+        {
+            if (layout != null)
+            {
+                layout.OpenAdd();
+            }
+        }
     }
     public class Menu
     {

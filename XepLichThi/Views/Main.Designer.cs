@@ -31,11 +31,11 @@ namespace XepLichThi.Views
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlView = new System.Windows.Forms.Panel();
+            this.headerCustom1 = new XepLichThi.Views.Controls.HeaderCustom();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.headerCustom1 = new XepLichThi.Views.Controls.HeaderCustom();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,19 @@ namespace XepLichThi.Views
             this.pnlView.Name = "pnlView";
             this.pnlView.Size = new System.Drawing.Size(1217, 349);
             this.pnlView.TabIndex = 2;
+            // 
+            // headerCustom1
+            // 
+            this.headerCustom1.AutoSize = true;
+            this.headerCustom1.BackColor = System.Drawing.Color.White;
+            this.headerCustom1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerCustom1.GetTimKiem = "";
+            this.headerCustom1.Location = new System.Drawing.Point(222, 42);
+            this.headerCustom1.Name = "headerCustom1";
+            this.headerCustom1.Size = new System.Drawing.Size(1217, 59);
+            this.headerCustom1.TabIndex = 0;
+            this.headerCustom1.SearchClick += new System.EventHandler(this.headerCustom1_SearchClick);
+            this.headerCustom1.AddClick += new System.EventHandler(this.headerCustom1_AddClick);
             // 
             // pnlMenu
             // 
@@ -102,18 +115,6 @@ namespace XepLichThi.Views
             this.label1.Size = new System.Drawing.Size(190, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "HUSC - XẾP LỊCH THI";
-            // 
-            // headerCustom1
-            // 
-            this.headerCustom1.AutoSize = true;
-            this.headerCustom1.BackColor = System.Drawing.Color.White;
-            this.headerCustom1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerCustom1.GetTimKiem = "Tìm kiếm";
-            this.headerCustom1.Location = new System.Drawing.Point(222, 42);
-            this.headerCustom1.Name = "headerCustom1";
-            this.headerCustom1.Size = new System.Drawing.Size(1217, 59);
-            this.headerCustom1.TabIndex = 0;
-            this.headerCustom1.SearchClick += new System.EventHandler(this.headerCustom1_SearchClick);
             // 
             // Main
             // 

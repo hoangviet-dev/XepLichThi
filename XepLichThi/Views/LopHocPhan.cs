@@ -16,6 +16,7 @@ namespace XepLichThi.Views
         public LopHocPhan()
         {
             InitializeComponent();
+            type = typeof(Models.LopHocPhan);
             lopHocPhan = new CtlLopHocPhan();
             LoadData("");
         }

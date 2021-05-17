@@ -15,6 +15,7 @@ namespace XepLichThi.Views
         public SinhVien()
         {
             InitializeComponent();
+            type = typeof(Models.SinhVien);
             sinhVien = new CtlSinhVien();
             LoadData("");
 

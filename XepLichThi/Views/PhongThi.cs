@@ -15,6 +15,7 @@ namespace XepLichThi.Views
         public PhongThi()
         {
             InitializeComponent();
+            type = typeof(Models.PhongThi);
             phongThi = new CtlPhongThi();
             loadData("");
 

@@ -14,8 +14,9 @@ namespace XepLichThi.Views
 {
     public partial class Layout : Form
     {
-        public List<PropInfo> res;
-        protected Object data;
+        public List<PropInfo> Props;
+        protected object data;
+        protected Type type; 
 
         protected string Seleted()
         {
@@ -24,24 +25,21 @@ namespace XepLichThi.Views
         public Layout()
         {
             InitializeComponent();
+            Props = new List<PropInfo>();
         }
 
         public void getListProp()
         {
-            
-            if (data != null && data.GetType().ToString().IndexOf("List") > -1)
+            if (type != null)
             {
-                res = new List<PropInfo>();
-                object item = ((IEnumerable)data).Cast<object>().ToList()[0];
-                //Console.WriteLine(item.GetType().GetProperties().Length);
-                PropertyInfo[] propertyInfo = item.GetType().GetProperties();
+                PropertyInfo[] propertyInfo = type.GetProperties();
                 foreach (PropertyInfo property in propertyInfo)
                 {
-                    res.Add(new PropInfo(
-                        property.Name, 
-                        property.GetCustomAttributes(typeof(DisplayNameAttribute), true).Cast<DisplayNameAttribute>().SingleOrDefault().DisplayName, 
+                    Props.Add(new PropInfo(
+                        property.Name,
+                        property.GetCustomAttributes(typeof(DisplayNameAttribute), true).Cast<DisplayNameAttribute>().SingleOrDefault().DisplayName,
                         property.GetType())
-                        );  
+                        );
                 }
             }
         }
@@ -65,6 +63,18 @@ namespace XepLichThi.Views
         protected virtual void DeleteData()
         {
 
+        }
+
+        public virtual void AddData(object sender, EventArgs e)
+        {
+
+        }
+
+        public void OpenAdd()
+        {
+            AddData frm = new AddData(Props);
+            frm.AddAction += new EventHandler(AddData);
+            frm.ShowDialog();
         }
 
         public bool ConfirmDelete()
