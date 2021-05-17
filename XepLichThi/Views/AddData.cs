@@ -41,7 +41,7 @@ namespace XepLichThi.Views
             }
         }
 
-        private List<string> getValue()
+        public List<string> GetValue()
         {
             List<string> res = new List<string>();
             foreach(Control con in pnlAdd.Controls)
