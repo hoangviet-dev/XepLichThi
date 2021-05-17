@@ -25,6 +25,8 @@ namespace XepLichThi.Models
 
         [DisplayName("Số tín chỉ")]
         public int SoTinChi { get; set; }
+
+        [DisplayName("Hình thức thi")]
         public string HinhThucThi { get; set; }
     }
 

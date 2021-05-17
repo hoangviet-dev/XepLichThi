@@ -25,11 +25,14 @@ namespace XepLichThi.Views
         public Layout()
         {
             InitializeComponent();
-            Props = new List<PropInfo>();
         }
 
         public void getListProp()
         {
+            if (Props == null)
+            {
+                Props = new List<PropInfo>();
+            }
             if (type != null)
             {
                 PropertyInfo[] propertyInfo = type.GetProperties();

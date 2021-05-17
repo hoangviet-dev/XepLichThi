@@ -15,7 +15,6 @@ namespace XepLichThi.Views
     public partial class AddData : Form
     {
         private List<PropInfo> lProp;
-        private List<TextboxGroupCustom> lTextBox;
         public AddData()
         {
             InitializeComponent();
