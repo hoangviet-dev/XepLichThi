@@ -15,12 +15,14 @@ namespace XepLichThi.Views.Controls
     public partial class TableCustom : UserControl
     {
         private string select;
+        private bool showHead;
         public TableCustom()
         {
             InitializeComponent();
             dtgvTable.EnableHeadersVisualStyles = false;
             dtgvTable.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(147)))), ((int)(((byte)(233)))));
             lblMa.Text = "";
+            showHead = true;
         }
 
         public void BindData(Object data)
@@ -32,6 +34,23 @@ namespace XepLichThi.Views.Controls
         [Category("Action")]
         [Description("Invoked when user clicks button")]
         public event EventHandler DeleteAction;
+
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public bool ShowHead
+        {
+            get => showHead;
+            set
+            {
+                showHead = value;
+                if (value)
+                {
+                    panel4.Show();
+                } else
+                {
+                    panel4.Hide();
+                }
+            }
+        }
 
         public string Selected
         {
