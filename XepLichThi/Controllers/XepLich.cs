@@ -47,6 +47,12 @@ namespace XepLichThi.Controllers
         private List<List<int>> createEdge(Dictionary<string, int> keyValuePairs, string namHoc, int hocKy)
         {
             List<List<int>> myList = new List<List<int>>();
+
+            for (int i = 0; i < keyValuePairs.Count; i++)
+            {
+                myList.Add(new List<int>());
+            }
+
             string query = "SELECT * FROM func_Danh_Sach_Lop_Hoc_Phan_Trung(@NamHoc,@HocKy)";
             SqlParam[] sqlParams =
             {
@@ -59,6 +65,8 @@ namespace XepLichThi.Controllers
             {
                 string hp1 = dataRow[0].ToString();
                 string hp2 = dataRow[1].ToString();
+                Console.WriteLine("?" + hp1 + " " + keyValuePairs[hp1]);
+                Console.WriteLine("?" + hp2 + " " + keyValuePairs[hp2]);
                 myList[keyValuePairs[hp1]].Add(keyValuePairs[hp2]);
             }
             return myList;
@@ -81,19 +89,19 @@ namespace XepLichThi.Controllers
         }
         private void xoaCanh(ref List<List<int>> edge, int a)
         {
-            for (int i = 0; i < edge[a].Count; i++)
+            for (int i = edge[a].Count - 1; i >= 0; i--)
             {
                 edge[edge[a][i]].Remove(a);
+                edge[a].RemoveAt(i);
             }
-            edge[0].RemoveRange(0, edge[a].Count);
         }
-        private void coloring(ref List<List<int>> edge, Dictionary<string, int> key, ref List<mdXepLich> node)
+        private int coloring(ref List<List<int>> edge, Dictionary<string, int> key, ref List<mdXepLich> node)
         {
             int color = 0;
             while (true)
             {
                 int maxDegNode = -1;
-                int valMaxDegNode = 0;
+                int valMaxDegNode = -1;
 
                 //Tim node co bac cao nhat
                 for (int i = 0; i < node.Count; i++)
@@ -110,8 +118,11 @@ namespace XepLichThi.Controllers
                 //To mau cho dinh tim duoc
                 node[maxDegNode].Color = ++color;
 
+                Console.WriteLine("~" + maxDegNode);
+
                 //Tim tap dinh co bac bang valMaxDegNode khong ke voi tap dinh tim duoc
                 List<int> list = new List<int>();
+                list.Add(maxDegNode);
                 for (int i = maxDegNode + 1; i < node.Count; i++)
                 {
                     if (edge[i].Count == valMaxDegNode && node[i].Color == 0)
@@ -124,15 +135,134 @@ namespace XepLichThi.Controllers
                     }
                 }
 
+                for (int i = 0; i < list.Count; i++) Console.WriteLine("!" + list[i]);
+
                 //Xoa canh trong list
-                list.Add(maxDegNode);
                 for (int i = 0; i < list.Count; i++)
                 {
                     xoaCanh(ref edge, list[i]);
                 }
             }
+            return color;
         }
-        public List<mdXepLich> process(string namHoc, int hocKy, DateTime NgayBatDau)
+        private bool checkIn(List<int> list, int a)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (a == list[i]) return true;
+            }
+            return false;
+        }
+        public void distrubute(ref List<mdXepLich> node, List<PhongThi> listRoom, int numColor, DateTime fromDate)
+        {
+            List<List<int>> room = new List<List<int>>();
+            int suatThiMin = 1;
+            for (int i = 0; i < listRoom.Count; i++) room.Add(new List<int>());
+            for (int color = 1; color <= numColor; color++)
+            {
+                List<mdXepLich> listSameColor = new List<mdXepLich>();
+                foreach (mdXepLich mdXepLich in node)
+                {
+                    if (mdXepLich.Color == color)
+                    {
+                        listSameColor.Add(mdXepLich);
+                    }
+                }
+                int suatThi = suatThiMin;
+                List<int> availableRoom = new List<int>();
+                foreach (mdXepLich mon in listSameColor)
+                {
+                    int seatNeed = mon.SiSo;
+                    int seatHave = 0;
+                    Console.WriteLine("@@@" + seatNeed.ToString() + " " + seatHave.ToString());
+                    int numListRoom = listRoom.Count;
+                    while (seatHave < seatNeed)
+                    {
+                        for (int i = 0; i < numListRoom; i++)
+                        {
+                            if (checkIn(room[i], suatThi) == false && listRoom[i].LoaiPhongThi.Contains(mon.HinhThuc))
+                            {
+                                availableRoom.Add(i);
+                                seatHave += listRoom[i].SoChoNgoi;
+                                mon.SuatThi = suatThi;
+                                mon.Phong = i;
+                                room[i].Add(suatThi);
+                                if (seatHave >= seatNeed) break;
+                            }
+                        }
+                        if (seatHave >= seatNeed) break;
+                        suatThi++;
+                    }
+                    suatThiMin = suatThi + 1;
+                    Console.WriteLine(seatHave);
+                }
+            }
+        }
+        public List<LichThi> calRoom(ref List<mdXepLich> node, int numColor, DateTime fromDate)
+        {
+            CtlPhongThi ctlPhongThi = new CtlPhongThi();
+            List<PhongThi> listRoom = ctlPhongThi.getData("");
+            Console.WriteLine("^" + listRoom.Count.ToString());
+            distrubute(ref node, listRoom, numColor, fromDate);
+
+            List<LichThi> listLich = new List<LichThi>();
+            DateTime date = fromDate;
+            TimeSpan timeAm = new TimeSpan(7, 30, 0);
+            TimeSpan timePm = new TimeSpan(14, 0, 0);
+
+            int bias = 0;
+            Console.WriteLine(fromDate.ToString());
+            Console.WriteLine(fromDate.DayOfWeek.ToString());
+            switch (fromDate.DayOfWeek)
+            {
+                case DayOfWeek.Tuesday:
+                    fromDate = fromDate.Date.AddDays(-1);
+                    bias = 2;
+                    break;
+                case DayOfWeek.Wednesday:
+                    fromDate = fromDate.Date.AddDays(-2);
+                    bias = 4;
+                    break;
+                case DayOfWeek.Thursday:
+                    fromDate = fromDate.Date.AddDays(-3);
+                    bias = 6;
+                    break;
+                case DayOfWeek.Friday:
+                    fromDate = fromDate.Date.AddDays(-4);
+                    bias = 8;
+                    break;
+                case DayOfWeek.Saturday:
+                    fromDate = fromDate.Date.AddDays(-5);
+                    bias = 10;
+                    break;
+            }
+            Console.WriteLine("#" + bias.ToString());
+            int cnt = 0;
+            foreach (mdXepLich mon in node)
+            {
+                Console.WriteLine("-" + (mon.SuatThi + bias).ToString());
+                int weekAdd = (mon.SuatThi + bias) / 13;
+                int dayAdd = (mon.SuatThi + bias - weekAdd * 13 - 1) / 2;
+                date = fromDate;
+                date = date.AddDays(dayAdd);
+                date = date.AddDays(weekAdd * 7);
+
+                date = date.Date + (mon.SuatThi % 2 == 1 ? timeAm : timePm);
+
+                string maLichThi = mon.MaLopHocPhan.Substring(0, 12) + (++cnt).ToString();
+
+                listLich.Add(new LichThi(
+                                            maLichThi,
+                                            mon.MaLopHocPhan,
+                                            date,
+                                            60,
+                                            listRoom[mon.Phong].MaPhongThi,
+                                            mon.HinhThuc
+                                            ));
+            }
+            return listLich;
+        }
+        public List<mdXepLich> process(string namHoc, int hocKy, ref int numColor)
         {
             List<mdXepLich> node = new List<mdXepLich>();
             List<List<int>> edge = new List<List<int>>();
@@ -140,8 +270,9 @@ namespace XepLichThi.Controllers
             node = loadNode(namHoc, hocKy);
             key = markNode(node);
             edge = createEdge(key, namHoc, hocKy);
-            coloring(ref edge, key, ref node);
+            numColor = coloring(ref edge, key, ref node);
             return node;
         }
+
     }
 }

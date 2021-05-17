@@ -19,6 +19,18 @@ namespace XepLichThi.Models
             HinhThuc = hinhThuc;
         }
 
+        public string getData()
+        {
+            string st = "";
+            st += MaLichThi + " ";
+            st += MaLopHocPhan + " ";
+            st += NgayThi.ToString() + " ";
+            st += ThoiGian.ToString() + " ";
+            st += MaPhongThi + " ";
+            st += HinhThuc + " ";
+            return st;
+        }
+
         [DisplayName("Mã lịch thi")]
         public string MaLichThi { get; set; }
 

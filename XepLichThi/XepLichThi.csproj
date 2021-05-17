@@ -61,12 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CtlDieuKien.cs" />
     <Compile Include="Controllers\CtlLichThi.cs" />
     <Compile Include="Controllers\CtlLoaiPhongThi.cs" />
     <Compile Include="Controllers\CtlLogin.cs" />
     <Compile Include="Controllers\CtlSinhVien.cs" />
     <Compile Include="Controllers\CtlLopHocPhan.cs" />
     <Compile Include="Controllers\CtlPhongThi.cs" />
+    <Compile Include="Controllers\XepLich.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +79,7 @@
     <Compile Include="Models\LichThi.cs" />
     <Compile Include="Models\LoaiPhongThi.cs" />
     <Compile Include="Models\LopHocPhan.cs" />
+    <Compile Include="Models\mdXepLich.cs" />
     <Compile Include="Models\PhongThi.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
