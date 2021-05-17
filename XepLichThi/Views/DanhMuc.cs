@@ -32,8 +32,8 @@ namespace XepLichThi.Views
                 l.Add(new TagInfo(pt.loaiPhongThi, pt.maLoaiPhongThi));
             }
 
-            ltagHinhThucThi.Data = l;
-            ltagHinhThucThi.BindData();
+            lTagLoaiPhongThi.Data = l;
+            lTagLoaiPhongThi.BindData();
         }
 
         private void ltagHinhThucThi_AddAction(object sender, EventArgs e)
@@ -45,6 +45,7 @@ namespace XepLichThi.Views
         private void lTagLoaiPhongThi_AddAction(object sender, EventArgs e)
         {
             TagInfo tag = (TagInfo)sender;
+            //tag.
 
         }
 

@@ -32,10 +32,10 @@ namespace XepLichThi.Views.Controls
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlAllow = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnAllow = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlAllow.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -50,48 +50,33 @@ namespace XepLichThi.Views.Controls
             this.txtTitle.BackColor = System.Drawing.Color.White;
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(6, 14);
+            this.txtTitle.Location = new System.Drawing.Point(8, 17);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(191, 25);
+            this.txtTitle.Size = new System.Drawing.Size(254, 31);
             this.txtTitle.TabIndex = 0;
-            this.txtTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTitle_KeyPress);
+            this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pnlAllow);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(203, 0);
+            this.panel1.Location = new System.Drawing.Point(270, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(116, 49);
+            this.panel1.Size = new System.Drawing.Size(155, 60);
             this.panel1.TabIndex = 2;
             // 
             // pnlAllow
             // 
             this.pnlAllow.Controls.Add(this.btnAllow);
             this.pnlAllow.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlAllow.Location = new System.Drawing.Point(0, 0);
+            this.pnlAllow.Location = new System.Drawing.Point(1, 0);
+            this.pnlAllow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlAllow.Name = "pnlAllow";
-            this.pnlAllow.Size = new System.Drawing.Size(58, 49);
+            this.pnlAllow.Size = new System.Drawing.Size(77, 60);
             this.pnlAllow.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(58, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(58, 49);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtTitle);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(203, 49);
-            this.panel3.TabIndex = 3;
             // 
             // btnAllow
             // 
@@ -99,12 +84,23 @@ namespace XepLichThi.Views.Controls
             this.btnAllow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAllow.FlatAppearance.BorderSize = 0;
             this.btnAllow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAllow.Location = new System.Drawing.Point(12, 9);
+            this.btnAllow.Location = new System.Drawing.Point(16, 11);
+            this.btnAllow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAllow.Name = "btnAllow";
-            this.btnAllow.Size = new System.Drawing.Size(34, 32);
+            this.btnAllow.Size = new System.Drawing.Size(45, 39);
             this.btnAllow.TabIndex = 1;
             this.btnAllow.UseVisualStyleBackColor = true;
             this.btnAllow.Click += new System.EventHandler(this.btnAllow_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(78, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(77, 60);
+            this.panel2.TabIndex = 0;
             // 
             // button1
             // 
@@ -112,23 +108,35 @@ namespace XepLichThi.Views.Controls
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(12, 9);
+            this.button1.Location = new System.Drawing.Point(16, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(34, 32);
+            this.button1.Size = new System.Drawing.Size(45, 39);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtTitle);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(270, 60);
+            this.panel3.TabIndex = 3;
+            // 
             // TagCustom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TagCustom";
-            this.Size = new System.Drawing.Size(319, 49);
+            this.Size = new System.Drawing.Size(425, 60);
             this.panel1.ResumeLayout(false);
             this.pnlAllow.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

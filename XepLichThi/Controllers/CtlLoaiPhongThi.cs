@@ -67,7 +67,7 @@ namespace XepLichThi.Controllers
             SqlParam[] paramIn =
             {
                 new SqlParam("@MaLoaiPhongThi", maLoaiPhongThi),
-                new SqlParam("@LoaPhongThi", loaiPhongThi),
+                new SqlParam("@LoaiPhongThi", loaiPhongThi),
                 new SqlParam("@ChiTiet", chiTiet)
             };
             SqlParam[] paramOut = { new SqlParam("@Result", 0) };

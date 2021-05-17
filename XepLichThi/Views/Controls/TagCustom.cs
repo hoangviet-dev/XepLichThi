@@ -47,17 +47,6 @@ namespace XepLichThi.Views.Controls
             set => newItem = value;
         }
 
-        private void txtTitle_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txtTitle.Text != title)
-            {
-                btnAllow.Show();
-            } else
-            {
-                btnAllow.Hide();
-            }
-        }
-
         [Browsable(true)]
         [Category("Action")]
         [Description("Invoked when user clicks button")]
@@ -70,17 +59,30 @@ namespace XepLichThi.Views.Controls
 
         private void btnAllow_Click(object sender, EventArgs e)
         {
-            if (AllowClick != null)
-                AllowClick(sender, e);
             title = txtTitle.Text;
+            if (AllowClick != null)
+                AllowClick(this, e);
             btnAllow.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (DeleteClick != null)
-                DeleteClick(sender, e);
+                DeleteClick(this, e);
             this.Dispose();
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtTitle.Text != title)
+            {
+                btnAllow.Show();
+            }
+            else
+            {
+                btnAllow.Hide();
+            }
         }
     }
 }

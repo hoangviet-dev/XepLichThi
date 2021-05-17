@@ -17,11 +17,11 @@ namespace XepLichThi.Views
             InitializeComponent();
             type = typeof(Models.PhongThi);
             phongThi = new CtlPhongThi();
-            loadData("");
+            LoadData("");
 
         }
 
-        private void loadData(string search)
+        public override void LoadData(string search)
         {
             data = phongThi.getData(search);
             BindData();
@@ -34,7 +34,7 @@ namespace XepLichThi.Views
                 BindData();
             }
 
-            loadData("");
+            LoadData("");
         }
     }
 }
