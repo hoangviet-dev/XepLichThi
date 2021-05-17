@@ -418,10 +418,14 @@ BEGIN
 	END
 
 	IF NOT(EXISTS(SELECT * FROM LoaiPhongThi WHERE MaLoaiPhongThi = @MaLoaiPhongThi))
+	BEGIN
+		SET @Result = -3
+		RETURN
+	END
 
-	INSERT INTO PhongThi(MaPhongThi,MaLoaiPhongThi,SoChoNgoi) VALUES (@MaPhongThi, @MaLoaiPhongThi, @SoChoNgoi)
+	INSERT INTO PhongThi(MaPhongThi,MaLoaiPhongThi,SoChoNgoi)
+	VALUES (@MaPhongThi,@MaLoaiPhongThi,@SoChoNgoi)
 	SET @Result = 0
-	RETURN
 END
 GO
 
