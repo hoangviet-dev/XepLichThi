@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace XepLichThi.Views
 {
     public partial class Layout : Form
     {
+        public List<PropInfo> res;
         protected Object data;
 
         protected string Seleted()
@@ -24,12 +26,23 @@ namespace XepLichThi.Views
             InitializeComponent();
         }
 
-        public void test()
+        public void getListProp()
         {
+            
             if (data != null && data.GetType().ToString().IndexOf("List") > -1)
             {
+                res = new List<PropInfo>();
                 object item = ((IEnumerable)data).Cast<object>().ToList()[0];
-                Console.WriteLine(item.GetType().GetProperties().Length);
+                //Console.WriteLine(item.GetType().GetProperties().Length);
+                PropertyInfo[] propertyInfo = item.GetType().GetProperties();
+                foreach (PropertyInfo property in propertyInfo)
+                {
+                    res.Add(new PropInfo(
+                        property.Name, 
+                        property.GetCustomAttributes(typeof(DisplayNameAttribute), true).Cast<DisplayNameAttribute>().SingleOrDefault().DisplayName, 
+                        property.GetType())
+                        );  
+                }
             }
         }
 
@@ -40,7 +53,7 @@ namespace XepLichThi.Views
             if (data != null)
             {
                 tblCus.BindData(data);
-                test();
+                getListProp();
             }
         }
 
@@ -64,14 +77,16 @@ namespace XepLichThi.Views
             DeleteData();
         }
 
-        private class PropInfo
+        public class PropInfo
         {
             public string Name;
             public string DisplayName;
-            public PropInfo(string _name, string _displayName)
+            public Type TypeData;
+            public PropInfo(string Name, string DisplayName, Type TypeData)
             {
-                this.Name = _name;
-                this.DisplayName = _displayName;
+                this.Name = Name;
+                this.DisplayName = DisplayName;
+                this.TypeData = TypeData;
             }
         }
     }
