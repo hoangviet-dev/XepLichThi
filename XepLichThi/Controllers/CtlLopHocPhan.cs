@@ -24,7 +24,7 @@ namespace XepLichThi.Controllers
             DataRowCollection drc = dt.Rows;
             foreach (DataRow dr in drc)
             {
-                llhp.Add(new LopHocPhan(dr[0].ToString(), dr[1].ToString(), int.Parse(dr[2].ToString()), dr[2].ToString()));
+                llhp.Add(new LopHocPhan(dr[0].ToString(), dr[1].ToString(), int.Parse(dr[2].ToString()), dr[3].ToString()));
             }
             return llhp;
         }
