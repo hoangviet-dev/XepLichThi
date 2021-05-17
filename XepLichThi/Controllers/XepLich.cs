@@ -132,7 +132,7 @@ namespace XepLichThi.Controllers
                 }
             }
         }
-        public List<mdXepLich> process(string namHoc, int hocKy)
+        public List<mdXepLich> process(string namHoc, int hocKy, DateTime NgayBatDau)
         {
             List<mdXepLich> node = new List<mdXepLich>();
             List<List<int>> edge = new List<List<int>>();

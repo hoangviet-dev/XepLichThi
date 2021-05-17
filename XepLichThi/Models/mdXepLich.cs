@@ -19,5 +19,6 @@ namespace XepLichThi.Models
         public int SiSo { get; set; }
         public int SuatThi { get; set; }
         public int Color { get; set; }
+        public int Phong { get; set; }
     }
 }
