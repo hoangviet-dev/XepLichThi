@@ -8,7 +8,7 @@ namespace XepLichThi.Models
 {
     class mdXepLich
     {
-        public mdXepLich(string maLopHocPhan, int siSo, int suatThi = 0, int color = 0, int phong = 0, string hinhThuc = "")
+        public mdXepLich(string maLopHocPhan, int siSo, string hinhThuc = "", int suatThi = 0, int color = 0, int phong = 0)
         {
             MaLopHocPhan = maLopHocPhan;
             SiSo = siSo;

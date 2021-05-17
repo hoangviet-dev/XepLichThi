@@ -24,20 +24,21 @@ namespace XepLichThi.Controllers
             DataRowCollection drc = dt.Rows;
             foreach (DataRow dr in drc)
             {
-                llhp.Add(new LopHocPhan(dr[0].ToString(), dr[1].ToString(), int.Parse(dr[2].ToString())));
+                llhp.Add(new LopHocPhan(dr[0].ToString(), dr[1].ToString(), int.Parse(dr[2].ToString()), dr[2].ToString()));
             }
             return llhp;
         }
 
-        public int addData(string maHP, string tenHP, int soTC)
+        public int addData(string maHP, string tenHP, int soTC, string hinhThucThi)
         {
             int res = 0;
-            string query = @"EXEC proc_LopHP_Them @MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @res OUT";
+            string query = @"EXEC proc_LopHP_Them @MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @HinhThucThi, @res OUT";
             SqlParam[] paramIn =
             {
                 new SqlParam("@MaLopHocPhan", maHP)
                 ,new SqlParam("@TenLopHocPhan", tenHP)
                 ,new SqlParam("@SoTinChi", soTC)
+                ,new SqlParam("@HinhThucThi", hinhThucThi)
             };
 
             SqlParam[] paramOut = {new SqlParam("@res", 0) };
@@ -67,15 +68,16 @@ namespace XepLichThi.Controllers
             return res;
         }
 
-        public int updateData(string maHP, string tenHP, int soTC)
+        public int updateData(string maHP, string tenHP, int soTC, string hinhThucThi)
         {
             int res = 0;
-            string query = @"EXEC proc_LopHP_Sua @MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @res OUT";
+            string query = @"EXEC proc_LopHP_Sua @MaLopHocPhan, @TenLopHocPhan, @SoTinChi, @HinhThucThi, @res OUT";
             SqlParam[] paramIn =
             {
                 new SqlParam("@MaLopHocPhan", maHP)
                 ,new SqlParam("@TenLopHocPhan", tenHP)
                 ,new SqlParam("@SoTinChi", soTC)
+                ,new SqlParam("@HinhThucThi", hinhThucThi)
             };
 
             SqlParam[] paramOut = { new SqlParam("@res", 0) };

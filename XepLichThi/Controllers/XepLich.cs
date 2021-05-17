@@ -30,7 +30,7 @@ namespace XepLichThi.Controllers
             DataRowCollection dataRowCollection = dataTable.Rows;
             foreach (DataRow dataRow in dataRowCollection)
             {
-                mdXepLiches.Add(new mdXepLich(dataRow[0].ToString(), int.Parse(dataRow[1].ToString())));
+                mdXepLiches.Add(new mdXepLich(dataRow[0].ToString(), int.Parse(dataRow[1].ToString()), dataRow[2].ToString()));
             }
             return mdXepLiches;
         }
@@ -262,7 +262,7 @@ namespace XepLichThi.Controllers
             }
             return listLich;
         }
-        public List<mdXepLich> process(string namHoc, int hocKy, ref int numColor)
+        public List<LichThi> process(string namHoc, int hocKy, DateTime fromDate)
         {
             List<mdXepLich> node = new List<mdXepLich>();
             List<List<int>> edge = new List<List<int>>();
@@ -270,8 +270,11 @@ namespace XepLichThi.Controllers
             node = loadNode(namHoc, hocKy);
             key = markNode(node);
             edge = createEdge(key, namHoc, hocKy);
-            numColor = coloring(ref edge, key, ref node);
-            return node;
+            int numColor = coloring(ref edge, key, ref node);
+
+            List<LichThi> listLichThi = new List<LichThi>();
+            listLichThi = calRoom(ref node, numColor, fromDate);
+            return listLichThi;
         }
 
     }

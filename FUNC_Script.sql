@@ -1512,6 +1512,7 @@ CREATE FUNCTION func_Danh_Sach_Lop_Hoc_Phan(
 RETURNS @Res TABLE(
 	MaLopHocPhan	nvarchar(50)
 	,SoLuongSV	int
+	,HinhThuc	nvarchar(50)
 )
 AS
 BEGIN
@@ -1519,10 +1520,11 @@ BEGIN
 	SET	@Key = CONCAT(@NamHoc,'.',@HocKy,'%')
 	
 	INSERT INTO @Res
-	SELECT	MaLopHocPhan, COUNT(MaSinhVien)
-	FROM	DanhSachSVLopHP
-	WHERE	MaLopHocPhan LIKE @Key
-	GROUP BY MaLopHocPhan
+	SELECT	DS.MaLopHocPhan, COUNT(MaSinhVien), LHP.HinhThucThi
+	FROM	DanhSachSVLopHP AS DS
+		JOIN LopHocPhan AS LHP ON DS.MaLopHocPhan = LHP.MaLopHocPhan
+	WHERE	DS.MaLopHocPhan LIKE @Key
+	GROUP BY DS.MaLopHocPhan, HinhThucThi
 	ORDER BY MaLopHocPhan DESC
 
 	RETURN
