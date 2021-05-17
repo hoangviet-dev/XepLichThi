@@ -946,6 +946,9 @@ BEGIN
 		RETURN
 	END
 
+	DELETE FROM	DanhSachSVLopHP
+	WHERE	MaLopHocPhan = @MaLopHocPhan
+
 	DELETE FROM LopHocPhan
 	WHERE MaLopHocPhan = @MaLopHocPhan
 	SET @Result = 0
