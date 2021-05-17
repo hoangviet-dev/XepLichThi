@@ -21,6 +21,12 @@ namespace XepLichThi.Views
 
         }
 
+        public override void AddData(object sender, EventArgs e)
+        {
+            base.AddData(sender, e);
+            AddData adD = (AddData)sender;
+        }
+
         public override void LoadData(string search)
         {
             data = sinhVien.getData(search);

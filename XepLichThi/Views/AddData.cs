@@ -39,15 +39,17 @@ namespace XepLichThi.Views
                 tbox.Placeholder = prop.DisplayName;
                 pnlAdd.Controls.Add(tbox);
             }
-            getText();
         }
 
-        private void getText()
+        private List<string> getValue()
         {
+            List<string> res = new List<string>();
             foreach(Control con in pnlAdd.Controls)
             {
-                Console.WriteLine(con);
+                TextboxGroupCustom tbox = (TextboxGroupCustom)con;
+                res.Add(tbox.Text);
             }
+            return res;
         }
 
         public event EventHandler AddAction;
@@ -55,7 +57,7 @@ namespace XepLichThi.Views
         private void buttonSmallCustom1_ButtonClick(object sender, EventArgs e)
         {
             if (AddAction != null)
-                AddAction(sender, e);
+                AddAction(this, e);
         }
     }
 }
