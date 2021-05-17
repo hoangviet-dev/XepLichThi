@@ -174,6 +174,7 @@ namespace XepLichThi.Controllers
                 {
                     int seatNeed = mon.SiSo;
                     int seatHave = 0;
+                    Console.WriteLine("-> " + mon.MaLopHocPhan);
                     Console.WriteLine("@@@" + seatNeed.ToString() + " " + seatHave.ToString());
                     int numListRoom = listRoom.Count;
                     while (seatHave < seatNeed)
@@ -267,13 +268,23 @@ namespace XepLichThi.Controllers
             List<mdXepLich> node = new List<mdXepLich>();
             List<List<int>> edge = new List<List<int>>();
             Dictionary<string, int> key = new Dictionary<string, int>();
+            Console.WriteLine("Start load node...");
             node = loadNode(namHoc, hocKy);
+            Console.WriteLine("Finish load node...");
+
+            Console.WriteLine("Start mark node...");
             key = markNode(node);
+            Console.WriteLine("Finish mark node...");
+
+            Console.WriteLine("Start coloring...");
             edge = createEdge(key, namHoc, hocKy);
             int numColor = coloring(ref edge, key, ref node);
+            Console.WriteLine("Finish coloring...");
 
+            Console.WriteLine("Start calRoom...");
             List<LichThi> listLichThi = new List<LichThi>();
             listLichThi = calRoom(ref node, numColor, fromDate);
+            Console.WriteLine("Finish coloring...");
             return listLichThi;
         }
 
