@@ -32,6 +32,8 @@ namespace XepLichThi.Views
                 lopHocPhan.deleteData(Seleted());
                 BindData();
             }
+
+            LoadData("");
         }
     }
 }

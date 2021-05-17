@@ -32,6 +32,8 @@ namespace XepLichThi.Views
                 phongThi.deleteData(Seleted());
                 BindData();
             }
+
+            loadData("");
         }
     }
 }

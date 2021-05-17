@@ -33,6 +33,7 @@ namespace XepLichThi.Views
                 sinhVien.deleteData(Seleted());
                 BindData();
             }
+            LoadData("");
         }
     }
 }
