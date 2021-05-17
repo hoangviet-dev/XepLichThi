@@ -251,7 +251,7 @@ CREATE PROC proc_SV_Them (
 	@MaSinhVien	nvarchar(50)
 	,@TenSinhVien	nvarchar(50)
 	,@NgaySinh	date = NULL
-	,@Result int
+	,@Result int OUT
 )
 AS
 BEGIN
