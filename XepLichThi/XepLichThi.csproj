@@ -113,6 +113,12 @@
     <Compile Include="Views\Controls\TableCustom.Designer.cs">
       <DependentUpon>TableCustom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\TagCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\TagCustom.Designer.cs">
+      <DependentUpon>TagCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\TextboxCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +142,12 @@
     </Compile>
     <Compile Include="Views\Layout.Designer.cs">
       <DependentUpon>Layout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ListTagsCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\ListTagsCustom.Designer.cs">
+      <DependentUpon>ListTagsCustom.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -167,12 +179,6 @@
     <Compile Include="Views\SinhVien.Designer.cs">
       <DependentUpon>SinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\XepLich.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\Controls\ButtonCustom.resx">
       <DependentUpon>ButtonCustom.cs</DependentUpon>
@@ -206,14 +213,23 @@
     <EmbeddedResource Include="Views\Controls\TableCustom.resx">
       <DependentUpon>TableCustom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\TagCustom.resx">
+      <DependentUpon>TagCustom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\TextboxCustom.resx">
       <DependentUpon>TextboxCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\TextboxGroupCustom.resx">
       <DependentUpon>TextboxGroupCustom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DanhMuc.resx">
+      <DependentUpon>DanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\ListTagsCustom.resx">
+      <DependentUpon>ListTagsCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -223,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SinhVien.resx">
       <DependentUpon>SinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\XepLich.resx">
+      <DependentUpon>XepLich.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -237,13 +256,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

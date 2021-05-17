@@ -13,17 +13,20 @@ namespace XepLichThi.Views.Controls
     public partial class TagCustom : UserControl
     {
         private string title;
-        private int index;
+        private string index;
+        private bool newItem;
 
         public TagCustom()
         {
             InitializeComponent();
+            btnAllow.Hide();
         }
 
-        public TagCustom(string title, int index) : this()
+        public TagCustom(string title, string index, bool newItem = false) : this()
         {
             this.title = title;
             this.index = index;
+            this.newItem = newItem;
             txtTitle.Text = title;
         }
 
@@ -33,9 +36,15 @@ namespace XepLichThi.Views.Controls
             set => title = value;
         }
 
-        public int Index
+        public string Index
         {
             get => index;
+        }
+
+        public bool NewItem
+        {
+            get => newItem;
+            set => newItem = value;
         }
 
         private void txtTitle_KeyPress(object sender, KeyPressEventArgs e)

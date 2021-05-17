@@ -30,12 +30,12 @@ namespace XepLichThi.Views.Controls
         private void InitializeComponent()
         {
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.btnAllow = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlAllow = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnAllow = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlAllow.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,19 +55,6 @@ namespace XepLichThi.Views.Controls
             this.txtTitle.Size = new System.Drawing.Size(191, 25);
             this.txtTitle.TabIndex = 0;
             this.txtTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTitle_KeyPress);
-            // 
-            // btnAllow
-            // 
-            this.btnAllow.BackgroundImage = global::XepLichThi.Properties.Resources.check;
-            this.btnAllow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAllow.FlatAppearance.BorderSize = 0;
-            this.btnAllow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAllow.Location = new System.Drawing.Point(12, 9);
-            this.btnAllow.Name = "btnAllow";
-            this.btnAllow.Size = new System.Drawing.Size(34, 32);
-            this.btnAllow.TabIndex = 1;
-            this.btnAllow.UseVisualStyleBackColor = true;
-            this.btnAllow.Click += new System.EventHandler(this.btnAllow_Click);
             // 
             // panel1
             // 
@@ -97,6 +84,28 @@ namespace XepLichThi.Views.Controls
             this.panel2.Size = new System.Drawing.Size(58, 49);
             this.panel2.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtTitle);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(203, 49);
+            this.panel3.TabIndex = 3;
+            // 
+            // btnAllow
+            // 
+            this.btnAllow.BackgroundImage = global::XepLichThi.Properties.Resources.check;
+            this.btnAllow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAllow.FlatAppearance.BorderSize = 0;
+            this.btnAllow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAllow.Location = new System.Drawing.Point(12, 9);
+            this.btnAllow.Name = "btnAllow";
+            this.btnAllow.Size = new System.Drawing.Size(34, 32);
+            this.btnAllow.TabIndex = 1;
+            this.btnAllow.UseVisualStyleBackColor = true;
+            this.btnAllow.Click += new System.EventHandler(this.btnAllow_Click);
+            // 
             // button1
             // 
             this.button1.BackgroundImage = global::XepLichThi.Properties.Resources.close;
@@ -110,20 +119,10 @@ namespace XepLichThi.Views.Controls
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtTitle);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(203, 49);
-            this.panel3.TabIndex = 3;
-            // 
             // TagCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel3);

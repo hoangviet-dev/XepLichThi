@@ -71,7 +71,13 @@ namespace XepLichThi.Views
                     frm.Dock = DockStyle.Fill;
                     pnlView.Controls.Add(frm);
                     frm.Show();
-                    layout = (Layout)frm;
+                    if (m.Header)
+                    {
+                        layout = (Layout)frm;
+                    } else
+                    {
+                        layout = null;
+                    }
                 }
                 if (oldOb != null)
                 {
