@@ -67,7 +67,7 @@ namespace XepLichThi.Controllers
             object[] obj = dataProvider.excuteProc(query, paramIn, paramOut);
 
             res = (int)obj[0];
-            /*
+            /* 
                 0: thành công
                 -1: dữ liệu trống
                 -2: k tìm thấy mã
