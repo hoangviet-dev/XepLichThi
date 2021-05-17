@@ -11,18 +11,18 @@ namespace XepLichThi.Models
 {
     class DataProvider
     {
-        private string connectionString = @"Data Source=LAPTOP\SQLEXPRESS;Initial Catalog=XepLichThi;Integrated Security=True";
+        private string connectionString = @"Data Source=DESKTOP-P5KS5H9\SQLEXPRESS;Initial Catalog=XepLichThi;Integrated Security=True";
 
         public DataProvider()
         {
-
+             
         }
 
         private List<string> getListNameParameter(string query)
         {
             List<string> res = new List<string>();
 
-            MatchCollection names = Regex.Matches(query, @"@(.*?)(?=[ ,])");
+            MatchCollection names = Regex.Matches(query, @"@(.*?)(?=[ ,)])");
             foreach(Match name in names)
             {
                 if (res.Find(item => item == name.Value) != name.Value)
