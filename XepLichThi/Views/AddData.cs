@@ -38,6 +38,7 @@ namespace XepLichThi.Views
                 tbox.Text = "";
                 tbox.Placeholder = prop.DisplayName;
                 pnlAdd.Controls.Add(tbox);
+                tbox.BringToFront();
             }
         }
 
