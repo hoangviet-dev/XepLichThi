@@ -12,6 +12,7 @@ namespace XepLichThi.Views
 {
     public partial class XepLich : Form
     {
+        //
         public XepLich()
         {
             InitializeComponent();
