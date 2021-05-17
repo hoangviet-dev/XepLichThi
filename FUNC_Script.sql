@@ -333,7 +333,7 @@ GO
 
 CREATE PROC proc_SV_Xoa (
 	@MaSinhVien nvarchar(50)
-	,@Result int
+	,@Result int OUTPUT
 )
 AS
 BEGIN
