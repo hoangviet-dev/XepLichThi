@@ -60,7 +60,7 @@ namespace XepLichThi.Controllers
         public int deleteData(string maSV)
         {
             int res = 0;
-            string query = @"EXEC proc_SV_Xoa @MaSinhVien, @res";
+            string query = @"EXEC proc_SV_Xoa @MaSinhVien, @res OUT";
             SqlParam[] paramIn = {new SqlParam(@"MaSinhVien", maSV) };
             SqlParam[] paramOut = { new SqlParam("@res", 0) };
 

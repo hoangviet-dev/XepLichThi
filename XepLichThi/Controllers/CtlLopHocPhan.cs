@@ -54,7 +54,7 @@ namespace XepLichThi.Controllers
         public int deleteData(string maHP)
         {
             int res = 0;
-            string query = @"EXEC proc_LopHP_Xoa @MaLopHocPhan @res OUT";
+            string query = @"dbo.proc_LopHP_Xoa @MaLopHocPhan, @res OUTPUT";
             SqlParam[] paramIn = {new SqlParam("@MaLopHocPhan", maHP) };
             SqlParam[] paramOut = {new SqlParam("@res", 0) };
 
