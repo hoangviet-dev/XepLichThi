@@ -30,7 +30,7 @@ namespace XepLichThi.Controllers
             DataRowCollection dataRowCollection = dataTable.Rows;
             foreach (DataRow dataRow in dataRowCollection)
             {
-                mdXepLiches.Add(new mdXepLich(dataRow[0].ToString(), int.Parse(dataRow[1].ToString()), dataRow[2].ToString()));
+                mdXepLiches.Add(new mdXepLich(dataRow[0].ToString(), int.Parse(dataRow[1].ToString()), dataRow[2].ToString(), int.Parse(dataRow[3].ToString())));
             }
             return mdXepLiches;
         }
@@ -263,6 +263,184 @@ namespace XepLichThi.Controllers
             }
             return listLich;
         }
+
+        private List<mdXepLich> findColor(List<mdXepLich> node, int color)
+        {
+            List<mdXepLich> result = new List<mdXepLich>();
+            foreach (mdXepLich item in node)
+            {
+                if (item.Color == color)
+                {
+                    result.Add(item);
+                }
+            }
+            return result.Count == 0 ? null : result;
+        }
+        class PhongThi_LopHocPhan
+        {
+            public PhongThi phongThi;
+            public string maLopHocPhan;
+            public int tuan;
+            public int ngay;
+            public int tiet;
+            public int thoiGianThi;
+            public string hinhThuc;
+
+            public PhongThi_LopHocPhan(PhongThi phongThi, string maLopHocPhan, int tuan, int ngay, int tiet, int thoiGianThi, string hinhThuc)
+            {
+                this.phongThi = phongThi;
+                this.maLopHocPhan = maLopHocPhan;
+                this.tuan = tuan;
+                this.ngay = ngay;
+                this.tiet = tiet;
+                this.thoiGianThi = thoiGianThi;
+                this.hinhThuc = hinhThuc;
+            }
+
+            public override string ToString()
+            {
+                return $"{phongThi.MaPhongThi} - {maLopHocPhan} - {tuan}/{ngay}/{tiet} - {thoiGianThi}";
+            }
+        }
+        private List<PhongThi_LopHocPhan> sortRoom(int numColor, Dictionary<string, int> key, List<mdXepLich> node)
+        {
+            int tuankt = 12;
+            CtlPhongThi ctlPhongThi = new CtlPhongThi();
+            CtlLopHocPhan ctlLopHocPhan = new CtlLopHocPhan();
+            List<PhongThi_LopHocPhan> dsPT_LHP = new List<PhongThi_LopHocPhan>();
+            List<PhongThi> p = new List<PhongThi>();
+            int m = 1;
+
+            List<mdXepLich> ds = new List<mdXepLich>();
+            ds = findColor(node, m);
+            mdXepLich lhpK;
+            if (ds == null)
+            {
+                return null;
+            }
+
+            int t = 0, tgthi, k, tongsc;
+            // While 1
+            while (t < tuankt)
+            {
+                int tn = 2;
+                // While 2
+                while (tn < 7)
+                {
+                    int i = 1;
+                    // While 3
+                    while (i <= 5 || i < 9)
+                    {
+                        k = 0;
+                        if (i == 5)
+                        {
+                            tgthi = 1;
+                        }
+                        else
+                        {
+                            tgthi = 6 - i % 5;
+                        }
+                        lhpK = ds.ElementAt(k);
+                        // while 4
+                        while (k < ds.Count && ds.Count > 0)
+                        {
+                            if (tgthi > lhpK.ThoiGianThi)
+                            {
+                                p = ctlPhongThi.getData("");
+                                tongsc = 0;
+                                foreach (PhongThi item in p)
+                                {
+                                    tongsc += item.SoChoNgoi;
+                                }
+                                PhongThi Ph = null;
+                                if (tongsc > lhpK.SiSo)
+                                {
+                                    // While 5
+                                    while (lhpK.SiSo > 0)
+                                    {
+                                        Ph = null;
+                                        // Tim phong Ph co suc chua nho nhat
+                                        // va lon hon si so lop hoc phan K
+                                        foreach (PhongThi item in p)
+                                        {
+                                            if (Ph == null)
+                                            {
+                                                if (item.SoChoNgoi >= lhpK.SiSo)
+                                                {
+                                                    Ph = item;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (item.SoChoNgoi >= lhpK.SiSo && item.SoChoNgoi < Ph.SoChoNgoi)
+                                                {
+                                                    Ph = item;
+                                                }
+                                            }
+                                        }
+                                        if (Ph == null)
+                                        {
+                                            // Tim phong Ph trog p co suc
+                                            // chua lon nhat
+                                            foreach (PhongThi item in p)
+                                            {
+                                                if (Ph == null)
+                                                {
+                                                    Ph = item;
+                                                }
+                                                else
+                                                {
+                                                    if (Ph.SoChoNgoi < item.SoChoNgoi)
+                                                    {
+                                                        Ph = item;
+                                                    }
+                                                }
+                                            }
+                                            lhpK.SiSo -= Ph.SoChoNgoi;
+                                        }
+                                        else
+                                        {
+                                            lhpK.SiSo = 0;
+                                        }
+                                        dsPT_LHP.Add(new PhongThi_LopHocPhan(Ph, lhpK.MaLopHocPhan, t, tn, i, lhpK.ThoiGianThi, lhpK.HinhThuc));
+                                        p.Remove(Ph);
+                                    }
+                                    ds.RemoveAt(k);
+                                }
+                                else
+                                {
+                                    k++;
+                                }
+                            }
+                            else
+                            {
+                                k++;
+                            }
+                        }
+
+                        if (ds.Count == 0)
+                        {
+                            m++;
+                            ds = findColor(node, m);
+                            if (ds == null) return dsPT_LHP;
+                        }
+                        if (i <= 5)
+                        {
+                            i = 6;
+                        }
+                        else if (i < 9)
+                        {
+                            i++;
+                        }
+                    }
+
+                    tn++;
+                }
+                
+                t++;
+            }
+            return dsPT_LHP;
+        }
         public List<LichThi> process(string namHoc, int hocKy, DateTime fromDate)
         {
             List<mdXepLich> node = new List<mdXepLich>();
@@ -281,11 +459,39 @@ namespace XepLichThi.Controllers
             int numColor = coloring(ref edge, key, ref node);
             Console.WriteLine("Finish coloring...");
 
-            Console.WriteLine("Start calRoom...");
             List<LichThi> listLichThi = new List<LichThi>();
-            listLichThi = calRoom(ref node, numColor, fromDate);
-            Console.WriteLine("Finish coloring...");
-            return listLichThi;
+            List<PhongThi_LopHocPhan> dsPhongThi_LopHocPhan = sortRoom(numColor, key, node);
+
+            if (dsPhongThi_LopHocPhan == null)
+            {
+                Console.WriteLine("khong duoc");
+                return null;
+            }
+            else
+            {
+                Console.WriteLine(dsPhongThi_LopHocPhan.Count);
+                foreach (var item in dsPhongThi_LopHocPhan)
+                {
+                    DateTime ngayThi = new DateTime(fromDate.Year, fromDate.Month, fromDate.Day);
+                    ngayThi.AddDays((item.tuan - 1) * 7 + item.ngay);
+                    TimeSpan timeSpan = new TimeSpan(item.tiet <= 5 ? 7 : 13, 30, 0);
+                    ngayThi += timeSpan;
+                    
+                    listLichThi.Add(new LichThi(DateTime.Now.ToString("yyMMddhhmmssfff"),
+                        item.maLopHocPhan, 
+                        ngayThi, 
+                        item.thoiGianThi==2?90:120,
+                        item.phongThi.MaPhongThi, 
+                        item.hinhThuc));
+                }
+                return listLichThi;
+            }
+
+            return null;
+            //Console.WriteLine("Start calRoom...");
+            //listLichThi = calRoom(ref node, numColor, fromDate);
+            //Console.WriteLine("Finish coloring...");
+            //return listLichThi;
         }
 
     }

@@ -9,6 +9,10 @@ namespace XepLichThi.Models
 {
     class PhongThi
     {
+        public PhongThi()
+        {
+        }
+
         public PhongThi(string maPhongThi, string loaiPhongThi, int soChoNgoi)
         {
             MaPhongThi = maPhongThi;
