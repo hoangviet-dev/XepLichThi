@@ -31,14 +31,16 @@ namespace XepLichThi.Views
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
             this.cbxHocKy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnXepLich = new XepLichThi.Views.Controls.ButtonSmallCustom();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tblLichThi = new XepLichThi.Views.Controls.TableCustom();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
-            this.tblLichThi = new XepLichThi.Views.Controls.TableCustom();
-            this.btnXepLich = new XepLichThi.Views.Controls.ButtonSmallCustom();
+            this.cbxNamHoc = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -48,7 +50,7 @@ namespace XepLichThi.Views
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 99);
+            this.label1.Location = new System.Drawing.Point(20, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 24);
             this.label1.TabIndex = 1;
@@ -57,6 +59,8 @@ namespace XepLichThi.Views
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.cbxNamHoc);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.dateTimeStart);
             this.panel1.Controls.Add(this.cbxHocKy);
             this.panel1.Controls.Add(this.label3);
@@ -67,6 +71,15 @@ namespace XepLichThi.Views
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(263, 450);
             this.panel1.TabIndex = 3;
+            // 
+            // dateTimeStart
+            // 
+            this.dateTimeStart.CustomFormat = "dd/MM/yyy";
+            this.dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeStart.Location = new System.Drawing.Point(17, 201);
+            this.dateTimeStart.Name = "dateTimeStart";
+            this.dateTimeStart.Size = new System.Drawing.Size(226, 20);
+            this.dateTimeStart.TabIndex = 1;
             // 
             // cbxHocKy
             // 
@@ -88,6 +101,18 @@ namespace XepLichThi.Views
             this.label3.TabIndex = 1;
             this.label3.Text = "Học kỳ";
             // 
+            // btnXepLich
+            // 
+            this.btnXepLich.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnXepLich.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnXepLich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXepLich.Location = new System.Drawing.Point(16, 241);
+            this.btnXepLich.Name = "btnXepLich";
+            this.btnXepLich.Size = new System.Drawing.Size(227, 50);
+            this.btnXepLich.TabIndex = 2;
+            this.btnXepLich.Title = "Xếp lịch";
+            this.btnXepLich.ButtonClick += new System.EventHandler(this.btnXepLich_ButtonClick);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -97,6 +122,15 @@ namespace XepLichThi.Views
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(537, 396);
             this.panel2.TabIndex = 4;
+            // 
+            // tblLichThi
+            // 
+            this.tblLichThi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblLichThi.Location = new System.Drawing.Point(0, 0);
+            this.tblLichThi.Name = "tblLichThi";
+            this.tblLichThi.ShowHead = false;
+            this.tblLichThi.Size = new System.Drawing.Size(537, 396);
+            this.tblLichThi.TabIndex = 0;
             // 
             // panel3
             // 
@@ -119,35 +153,25 @@ namespace XepLichThi.Views
             this.label2.TabIndex = 0;
             this.label2.Text = "LỊCH THI";
             // 
-            // dateTimeStart
+            // cbxNamHoc
             // 
-            this.dateTimeStart.CustomFormat = "dd/MM/yyy";
-            this.dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeStart.Location = new System.Drawing.Point(16, 126);
-            this.dateTimeStart.Name = "dateTimeStart";
-            this.dateTimeStart.Size = new System.Drawing.Size(226, 20);
-            this.dateTimeStart.TabIndex = 1;
+            this.cbxNamHoc.BackColor = System.Drawing.Color.White;
+            this.cbxNamHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxNamHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxNamHoc.Location = new System.Drawing.Point(16, 123);
+            this.cbxNamHoc.Name = "cbxNamHoc";
+            this.cbxNamHoc.Size = new System.Drawing.Size(226, 32);
+            this.cbxNamHoc.TabIndex = 5;
             // 
-            // tblLichThi
+            // label4
             // 
-            this.tblLichThi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblLichThi.Location = new System.Drawing.Point(0, 0);
-            this.tblLichThi.Name = "tblLichThi";
-            this.tblLichThi.ShowHead = false;
-            this.tblLichThi.Size = new System.Drawing.Size(537, 396);
-            this.tblLichThi.TabIndex = 0;
-            // 
-            // btnXepLich
-            // 
-            this.btnXepLich.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnXepLich.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnXepLich.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnXepLich.Location = new System.Drawing.Point(16, 162);
-            this.btnXepLich.Name = "btnXepLich";
-            this.btnXepLich.Size = new System.Drawing.Size(227, 50);
-            this.btnXepLich.TabIndex = 2;
-            this.btnXepLich.Title = "Xếp lịch";
-            this.btnXepLich.ButtonClick += new System.EventHandler(this.btnXepLich_ButtonClick);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(20, 94);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 24);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Năm học";
             // 
             // XepLich
             // 
@@ -180,5 +204,7 @@ namespace XepLichThi.Views
         private System.Windows.Forms.ComboBox cbxHocKy;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimeStart;
+        private System.Windows.Forms.ComboBox cbxNamHoc;
+        private System.Windows.Forms.Label label4;
     }
 }

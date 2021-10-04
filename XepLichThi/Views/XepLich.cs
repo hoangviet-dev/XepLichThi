@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XepLichThi.Controllers;
 using XepLichThi.Models;
 
 namespace XepLichThi.Views
@@ -21,6 +22,12 @@ namespace XepLichThi.Views
             cbxHocKy.Items.Add("2");
             cbxHocKy.Items.Add("3");
             cbxHocKy.Text = "1";
+            CtlLichThi ctlLichThi = new CtlLichThi();
+            foreach (string item in ctlLichThi.getNamHoc())
+            {
+                cbxNamHoc.Items.Add(item);
+            }
+            cbxNamHoc.SelectedIndex = 0;
         }
 
         private void btnXepLich_ButtonClick(object sender, EventArgs e)
@@ -29,14 +36,7 @@ namespace XepLichThi.Views
             Controllers.XepLich xepLich = new Controllers.XepLich();
             DateTime dateTime = dateTimeStart.Value;
             int hk = int.Parse(cbxHocKy.Text);
-            int nh = dateTime.Year;
-            int nt = nh + 1;
-            string namhoc = nh.ToString() + "-" + nt.ToString();
-            if (hk>1 || (hk == 1 && dateTime.Month < 3))
-            {
-                nt = nh - 1;
-                namhoc = nt.ToString() + "-" + nh.ToString();
-            }
+            string namhoc = cbxNamHoc.Text;
             listLichThi = xepLich.process(namhoc, hk, dateTime);
             tblLichThi.BindData(listLichThi);
         }

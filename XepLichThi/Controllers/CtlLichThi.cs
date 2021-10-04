@@ -18,6 +18,19 @@ namespace XepLichThi.Controllers
             dataPovider = new DataProvider();
         }
 
+        public List<string> getNamHoc()
+        {
+            List<string> namHocs = new List<string>();
+            string query = "SELECT * FROM func_Danh_Sach_Nam_Hoc()";
+            DataTable dataTable = dataPovider.excuteQuery(query);
+            DataRowCollection dataRowCollection = dataTable.Rows;
+            foreach (DataRow item in dataRowCollection)
+            {
+                namHocs.Add(item[0].ToString());
+            }
+            return namHocs;
+        }
+
         public List<LichThi> getDataMaLichThi(string maLichThi, String fromDate = null, string toDate = null)
         {
             List<LichThi> ls = new List<LichThi>();
